@@ -1,6 +1,6 @@
-baseurl = "https://www.example.com/"
-title = "Black & Light"
-author = "David Hamp-Gonsalves"
+baseurl = "https://drichardson.netlify.com/"
+title = "Dale Richardson"
+author = "Dale Richardson"
 canonifyurls = true
 languagecode = "en"
 theme = "hugo-black-and-light-theme"
@@ -8,16 +8,18 @@ theme = "hugo-black-and-light-theme"
 pygmentsstyle       = "bw"
 pygmentscodefences  = true
 
+ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
+
 [params]
-  sitename = "Black & Light"
+  sitename = "Dale Richardson"
 
 [[menu.main]]
     name = "About"
-    url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
+    url  = "/about"
 [[menu.main]]
     name = "Projects"
     url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
 [[menu.main]]
-    name = "Resume"
-    url  = "https://github.com/davidhampgonsalves/hugo-black-and-light-theme"
+    name = "CV"
+    url  = "/cv"
 

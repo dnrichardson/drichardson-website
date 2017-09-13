@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <base href="/">
+    
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400|Old+Standard+TT:400' rel='stylesheet' type='text/css'>
+
+    <link rel="icon" type="image/png" href="/favicon_16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon_32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon_128x128.png" sizes="128x128">
+
+    <title>
+      
+      
+         Curriculum Vitae 
+      
+    </title>
+    <link rel="canonical" href="/cv/">
+
+    <style>
+  * {
+    border:0;
+    font:inherit;
+    font-size:100%;
+    vertical-align:baseline;
+    margin:0;
+    padding:0;
+    color: black;
+  }
+
+  body {
+    font-family:'Open Sans', 'Myriad Pro', Myriad, sans-serif;
+    font-size:17px;
+    line-height:160%;
+    color:#1d1313;
+    max-width:700px;
+    margin:auto;
+  }
+
+  p {
+    margin: 20px 0;
+  }
+
+  a img {
+    border:none;
+  }
+
+  img {
+    margin: 10px auto 10px auto;
+    max-width: 100%;
+    display: block;
+  }
+
+  .left-justify {
+    float: left;
+  }
+
+  .right-justify {
+    float:right;
+  }
+
+  pre, code {
+    font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+    background-color: #f7f7f7;
+  }
+
+  code {
+    font-size: 12px;
+    padding: 4px;
+  }
+
+  pre {
+    margin-top: 0;
+    margin-bottom: 16px;
+    word-wrap: normal;
+    padding: 16px;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+  }
+
+  pre>code {
+    padding: 0;
+    margin: 0;
+    font-size: 100%;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
+  }
+
+  pre code {
+    display: inline;
+    max-width: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    line-height: inherit;
+    word-wrap: normal;
+    background-color: transparent;
+    border: 0;
+  }
+
+  pre code::before,
+  pre code::after {
+    content: normal;
+  }
+
+  em,q,em,dfn {
+    font-style:italic;
+  }
+
+  .sans,html .gist .gist-file .gist-meta {
+    font-family:"Open Sans","Myriad Pro",Myriad,sans-serif;
+  }
+
+  .mono,pre,code,tt,p code,li code {
+    font-family:Menlo,Monaco,"Andale Mono","lucida console","Courier New",monospace;
+  }
+
+  .heading,.serif,h1,h2,h3 {
+    font-family:"Old Standard TT",serif;
+  }
+
+  strong {
+    font-weight:600;
+  }
+
+  q:before {
+    content:"\201C";
+  }
+
+  q:after {
+    content:"\201D";
+  }
+
+  del,s {
+    text-decoration:line-through;
+  }
+
+  blockquote {
+    font-family:"Old Standard TT",serif;
+    text-align:center;
+    padding:50px;
+  }
+
+  blockquote p {
+    display:inline-block;
+    font-style:italic;
+  }
+
+  blockquote:before,blockquote:after {
+    font-family:"Old Standard TT",serif;
+    content:'\201C';
+    font-size:35px;
+    color:#403c3b;
+  }
+
+  blockquote:after {
+    content:'\201D';
+  }
+
+  hr {
+    width:40%;
+    height: 1px;
+    background:#403c3b;
+    margin: 25px auto;
+  }
+
+  h1 {
+    font-size:35px;
+  }
+
+  h2 {
+    font-size:28px;
+  }
+
+  h3 {
+    font-size:22px;
+    margin-top:18px;
+  }
+
+  h1 a,h2 a,h3 a {
+    text-decoration:none;
+  }
+
+  h1,h2 {
+    margin-top:28px;
+  }
+
+  #sub-header, time {
+    color:#403c3b;
+    font-size:13px;
+  }
+
+  #sub-header {
+    margin: 0 4px;
+  }
+
+  #nav h1 a {
+    font-size:35px;
+    color:#1d1313;
+    line-height:120%;
+  }
+
+  .posts_listing a,#nav a {
+    text-decoration: none;
+  }
+
+  li {
+    margin-left: 20px;
+  }
+
+  ul li {
+    margin-left: 5px;
+  }
+
+  ul li {
+    list-style-type: none;
+  }
+  ul li:before {
+    content:"\00BB \0020";
+  }
+
+  #nav ul li:before, .posts_listing li:before {
+    content:'';
+    margin-right:0;
+  }
+
+  #content {
+    text-align:left;
+    width:100%;
+    font-size:15px;
+    padding:60px 0 80px;
+  }
+
+  #content h1,#content h2 {
+    margin-bottom:5px;
+  }
+
+  #content h2 {
+    font-size:25px;
+  }
+
+  #content .entry-content {
+    margin-top:15px;
+  }
+
+  #content time {
+    margin-left:3px;
+  }
+
+  #content h1 {
+    font-size:30px;
+  }
+
+  .highlight {
+    margin: 10px 0;
+  }
+
+  .posts_listing {
+    margin:0 0 50px;
+  }
+
+  .posts_listing li {
+    margin:0 0 25px 15px;
+  }
+
+  .posts_listing li a:hover,#nav a:hover {
+    text-decoration: underline;
+  }
+
+  #nav {
+    text-align:center;
+    position:static;
+    margin-top:60px;
+  }
+
+  #nav ul {
+    display: table;
+    margin: 8px auto 0 auto;
+  }
+
+  #nav li {
+    list-style-type:none;
+    display:table-cell;
+    font-size:15px;
+    padding: 0 20px;
+  }
+
+  #links {
+    margin: 50px 0 0 0;
+  }
+
+  #links :nth-child(2) {
+    float:right;
+  }
+
+  #not-found {
+    text-align: center;
+  }
+
+  #not-found a {
+    font-family:"Old Standard TT",serif;
+    font-size: 200px;
+    text-decoration: none;
+    display: inline-block;
+    padding-top: 225px;
+  }
+
+  @media (max-width: 750px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:28px;
+    }
+
+    #nav li {
+      font-size:13px;
+      padding: 0 15px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:50px;
+      font-size:14px;
+    }
+
+    #content h1 {
+      font-size:25px;
+    }
+
+    #content h2 {
+      font-size:22px;
+    }
+
+    .posts_listing li div {
+      font-size:12px;
+    }
+  }
+
+  @media (max-width: 400px) {
+    body {
+      padding-left:20px;
+      padding-right:20px;
+    }
+
+    #nav h1 a {
+      font-size:22px;
+    }
+
+    #nav li {
+      font-size:12px;
+      padding: 0 10px;
+    }
+
+    #content {
+      margin-top:0;
+      padding-top:20px;
+      font-size:12px;
+    }
+
+    #content h1 {
+      font-size:20px;
+    }
+
+    #content h2 {
+      font-size:18px;
+    }
+
+    .posts_listing li div{
+      font-size:12px;
+    }
+  }
+</style>
+
+
+    
+  </head>
+
+  <body>
+    <section id=nav>
+      <h1><a href="/">Dale Richardson</a></h1>
+      <ul>
+        
+          <li><a href="/about">About</a></li>
+        
+          <li><a href="/cv">CV</a></li>
+        
+          <li><a href="https://github.com/davidhampgonsalves/hugo-black-and-light-theme">Projects</a></li>
+        
+      </ul>
+    </section>
+
+
+<section id=content>
+  <h1> Curriculum Vitae </h1>
+
+  <div id=sub-header>
+    June 2017 · 5 minute read
+  </div>
+
+  <div class="entry-content">
+    
+
+<h2 id="dale-richardson-phd">Dale Richardson, PhD</h2>
+
+<p>I am a bioinformatics analyst of large scale genomics data and aspiring data scientist with an intense dedication to continued learning.</p>
+
+<h3 id="scientific-research-interests">Scientific research interests</h3>
+
+<p>Post-transcriptional gene regulation, alternative splicing, comparative genomics, abiotic stress response</p>
+
+<h2 id="currently">Currently</h2>
+
+<p>I conduct research on alternative splicing and abiotic stress responses in the model plant, <em>Arabidopsis thaliana</em>. In my spare time, I take online courses in preparation for a career transition into data analysis/data science.</p>
+
+<h3 id="specialized-in">Specialized in</h3>
+
+<ul>
+<li>Next Generation RNASeq data analysis</li>
+<li>Data analysis and statistics with R</li>
+<li>Plant Molecular Biology</li>
+<li>Quantitative Real Time PCR</li>
+</ul>
+
+<h3 id="would-like-to-be-specialized-in">Would like to be specialized in</h3>
+
+<ul>
+<li>Python programming</li>
+<li>SQL</li>
+<li>Machine Learning / Predictive Analytics</li>
+</ul>
+
+<h2 id="education">Education</h2>
+
+<h4 id="2010">2010</h4>
+
+<p><strong>Ph.D. Evolutionary Genomics</strong> [<a href="http://www.uni-koeln.de">University of Cologne</a>]</p>
+
+<h4 id="2006">2006</h4>
+
+<p><strong>M.S. Botany</strong> [<a href="http://www.colostate.edu">Colorado State University</a>]</p>
+
+<h4 id="2004">2004</h4>
+
+<p><strong>B.S. Biology</strong> [<a href="http://www.colostate.edu">Colorado State University</a>]</p>
+
+<h2 id="certificates">Certificates</h2>
+
+<h4 id="2017">2017</h4>
+
+<ul>
+<li><strong>Statistics with R Specialization</strong> [<a href="https://www.coursera.org/account/accomplishments/specialization/JS3MU9M2AK3U">Coursera Certificate</a>]</li>
+<li><strong>15.071x: The Analytics Edge</strong> [<a href="https://courses.edx.org/certificates/baf006ef9d5a4887a444133640f166a6">edX Certificate</a>]</li>
+<li><strong>Introduction to Probability and Data by Duke University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/X73W7V25QQ5D">Coursera Certificate</a>]</li>
+<li><strong>Inferential Statistics Duke University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/certificate/S2R7J7ZDJZCU">Coursera Certificate</a>]</li>
+<li><strong>Linear Regression and Modeling Duke University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/certificate/F95LDH6EVEER">Coursera Certificate</a>]</li>
+<li><strong>Bayesian Statistics Duke University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/CGPEHRD8TA7L">Coursera Certificate</a>]</li>
+<li><strong>Advanced Biostatistics Workshop</strong> [<a href="http://gtpb.igc.gulbenkian.pt/bicourses/ABSTAT17">Gulbenkian Training Program in Bioinformatics</a>]</li>
+</ul>
+
+<h4 id="2016">2016</h4>
+
+<ul>
+<li><strong>The Data Scientist’s Toolbox by  Johns Hopkins University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/CPY3WDPJGYX5">Coursera Certificate</a>]</li>
+<li><strong>R Programming by Johns Hopkins University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/65UEVZALXRTE">Coursera Certificate</a>]</li>
+<li><strong>Getting and Cleaning Data by Johns Hopkins University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/D6DCU236WVRG">Coursera Certificate</a>]</li>
+<li><strong>Reproducible Research by Johns Hopkins University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/NHDLU8M6F45H">Coursera Certificate</a>]</li>
+<li><strong>Exploratory Data Analysis by Johns Hopkins University on Coursera</strong> [<a href="https://www.coursera.org/account/accomplishments/verify/DFL54DDED8QP">Coursera Certificate</a>]</li>
+<li><strong>Precision Medicine Workshop</strong> [<a href="http://gtpb.igc.gulbenkian.pt/bicourses/index.html">Gulbenkian Training Program in Bioinformatics</a>]</li>
+</ul>
+
+<h2 id="awards">Awards</h2>
+
+<h4 id="2012">2012</h4>
+
+<ul>
+<li>Post-Doctoral Fellowship, <em>FCT</em>, Lisbon, Portugal</li>
+</ul>
+
+<h4 id="2007">2007</h4>
+
+<ul>
+<li>Travel Fellowship, <em>Intelligent Systems for Molecular Biology</em>, Vienna, Austria</li>
+</ul>
+
+<h4 id="2006-1">2006</h4>
+
+<ul>
+<li>PhD Fellowship, <em>International Graduate School for Genetics and Functional Genomics</em>, Cologne, Germany</li>
+</ul>
+
+<h4 id="2003">2003</h4>
+
+<ul>
+<li>NSF Research Experiences for Undergraduates, <em>National Science Foundation</em>, Arlington, Virginia, USA</li>
+</ul>
+
+<h2 id="publications">Publications</h2>
+
+<h3 id="journals">Journals</h3>
+
+<h4 id="2017-1">2017</h4>
+
+<p>Carvalho, S.D.*, <strong>Richardson, D.N*</strong>., Cruz, T.M.D., Carvalho, R.F., Barbosa, I.C.R., Stecca, K.L., Kinney, A.J., Zeidler, M., Duque, P. The plant-specific SCL30a SR protein confers ABA-Dependent salt and osmotic stress tolerance during seed germination in Arabidopsis. Under submission. * co-authors</p>
+
+<p>Ling Y, Alshareef S, Butt H, Lozano-Juste J, Li L, Galal AA, Moustafa A, Momin AA, Tashkandi M, <strong>Richardson DN</strong>, Fujii H, Arold S, Rodriguez PL, Duque P, Mahfouz MM. (2017) Pre-mRNA splicing repression triggers abiotic stress signaling in plants. The Plant Journal 89, 291-309. <em>5-YR IF: 6.468, Citations: 2; Top 2% in Plant Science</em></p>
+
+<h4 id="2014">2014</h4>
+
+<p>Cruz, T.M.D., Carvalho, R.F., <strong>Richardson, D.N.</strong> &amp; Duque, P. (2014) Abscisic acid (ABA) regulation of Arabidopsis SR protein gene expression. International Journal of Molecular Sciences 15(10): 17541-17564. <em>5-YR IF: 3.213 Citations: 11; Q2 in Computer Science</em></p>
+
+<h4 id="2012-1">2012</h4>
+
+<p>Day I., Golovkin M., Palusa S., Link A., Ali G., Thomas J., <strong>Richardson, D.N.</strong> &amp; Reddy A. (2012) Interactions of SR45, an SR-like protein, with spliceosomal proteins and an intronic sequence: insights into regulated splicing. The Plant Journal 71, 936-947. <em>5-YR IF: 6.468, Citations: 25; Top 2% in Plant Science</em></p>
+
+<p>Reddy, A., Rogers, M., <strong>Richardson, D.N.</strong>, Hamilton, M. &amp; Ben-Hur, A. (2012) Deciphering the plant splicing code: experimental and computational approaches for predicting alternative splicing and splicing regulatory elements. Frontiers in Plant Science 3,. <em>5-YR IF: 4.461, Citations: 43; Q1 in Plant Sciences</em></p>
+
+<h4 id="2011">2011</h4>
+
+<p><strong>Richardson, D.N.</strong>, Rogers M., Labadorf A., Ben-Hur A., Guo H., Paterson A. &amp; Reddy A. (2011) Comparative analysis of serine/arginine-rich proteins across 27 eukaryotes: insights into sub-family classification and extent of alternative splicing. PLoS One 6, 24542. <em>5-YR IF: 3.535, Citations: 31; Q1 in Agricultural and Biological Sciences (misc.)</em></p>
+
+<h4 id="2008">2008</h4>
+
+<p>Simmons, M., <strong>Richardson, D.</strong> &amp; Reddy, A. (2008) Incorporation of gap characters and lineage-specific regions into phylogenetic analyses of gene families from divergent clades: an example from the kinesin superfamily across eukaryotes. Cladistics 24, 372-384. <em>5-YR IF: 4.957, Citations: 9; Q1 in Ecology, Evolution, Behavior and Systematics</em></p>
+
+<h4 id="2007-1">2007</h4>
+
+<p>Palusa, S., Golovkin, M., Shin, S., <strong>Richardson, D.N.</strong> &amp; Reddy, A. (2007) Organ-specific, developmental, hormonal and stress regulation of expression of putative pectate lyase genes in Arabidopsis. New Phytologist 174, 537-550. <em>5-YR IF: 7.554, Citations: 41; Top 3% in Plant Science</em></p>
+
+<h4 id="2006-2">2006</h4>
+
+<p><strong>Richardson, D.N.</strong>, Simmons, M. &amp; Reddy, A. (2006) Comprehensive comparative analysis of kinesins in photosynthetic eukaryotes. BMC genomics 7, 18. <em>5-YR IF: 4.276, Citations: 89; Q1 in Biotechnology</em></p>
+
+<h3 id="conference-proceedings">Conference Proceedings</h3>
+
+<h4 id="2009">2009</h4>
+
+<p><strong>Richardson, D.N.</strong> &amp; Wiehe, T. (2009) Properties of Sequence Conservation in Upstream Regulatory and Protein Coding Sequences among Paralogs in Arabidopsis thaliana. Lecture Notes in Computer Science, Vol 5817, 217-228.  <em>Q2 in Computer Science</em></p>
+
+<h3 id="oral-communications">Oral Communications</h3>
+
+<h4 id="2012-2">2012</h4>
+
+<p>Genome Duplication and Alternative Splicing: Gateways to Functional Diversity
+<em>Instituto Gulbenkian de Ciência, Oeiras, Portugal, May 10, 2012</em></p>
+
+<h4 id="2009-1">2009</h4>
+
+<p>Properties of Sequence Conservation in Upstream Regulatory and Protein Coding Sequences among Paralogs in Arabidopsis thaliana
+<em>Seventh Annual RECOMB Satellite Workshop on Comparative Genomics, Budapest, Hungary, September 27, 2009</em></p>
+
+<h4 id="2006-3">2006</h4>
+
+<p>Comprehensive Comparative Analysis of Kinesins in Photosynthetic Eukayotes
+<em>Collaborative Plant Biology in the Rocky Mountain/Midwest: Impacts and Future Prospects for Plant Genomics, University of Wyoming, June 1, 2006</em></p>
+
+<h3 id="poster-presentations">Poster Presentations</h3>
+
+<h4 id="2014-1">2014</h4>
+
+<p>Transcriptomic Insights into SCL30a, an Arabidopsis SR Protein Involved in Salt Stress Tolerance During Seed Germination
+<em>Post-transcriptional Gene Regulation in Plants, June 30 - July 2, 2014, Poznan, Poland</em></p>
+
+<h4 id="2008-1">2008</h4>
+
+<p>Promoter and Protein Divergence Independently Mediate Expression Divergence Among Arabidopsis Paralogs
+<em>Annual Meeting of the SMBE, Barcelona, Spain, June 5-8, 2008.</em></p>
+
+<h4 id="2007-2">2007</h4>
+
+<p>Investigation of 5&rsquo; Upstream Regions of Recently Duplicated Genes in Arabidopsis within a Functional Framework
+<em>International Society for Computational Biology, Vienna, Austria, July 21-25, 2007.</em></p>
+
+<p>Crossroads in Biology
+<em>University of Cologne, Germany, March 22, 2007.</em></p>
+
+<h4 id="2006-4">2006</h4>
+
+<p>Comprehensive Comparative Analysis Of Kinesins In Photosynthetic Eukaryotes
+<em>Plant and Animal Genome XIV, San Diego, California, January 14-18, 2006</em></p>
+
+<h2 id="languages">Languages</h2>
+
+<ul>
+<li><strong>English</strong> (Native)</li>
+<li><strong>Portuguese</strong> (Advanced)</li>
+<li><strong>German</strong> (Basic)
+<br /></li>
+</ul>
+
+<p>*Markdown CV template adapted from <a href="#">here</a></p>
+
+  </div>
+
+  <div id=links>
+    
+    
+  </div>
+</section>
+
+  
+</body>
+</html>
+
+
+
