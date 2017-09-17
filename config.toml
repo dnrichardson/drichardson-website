@@ -14,7 +14,7 @@ disqusShortname = "dnrichardson-1" # delete this to disable disqus comments
     font = "Droid Sans" # should match the name on Google Fonts!
     highlight = true
     highlightStyle = "tomorrow"
-    highlightLanguages = ["go", "haskell", "kotlin", "scala", "swift", "r"]
+    highlightLanguages = ["r"]
 
 [[menu.main]]
     url = "/"
@@ -35,6 +35,11 @@ disqusShortname = "dnrichardson-1" # delete this to disable disqus comments
     url = "/about/"
     name = "About"
     weight = 4
+    
+[[menu.main]]
+    url = "/cv/"
+    name = "CV"
+    weight = 5
 
 # Social icons to be shown on the right-hand side of the navigation bar
 # The "name" field should match the name of the icon to be used
