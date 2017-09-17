@@ -1,4 +1,4 @@
-baseURL = "https://drichardson.netlify.com/"
+baseURL = "https://drichardson.netlify.com"
 languageCode = "en-us"
 title = "Dale Richardson"
 theme = "minimal"
