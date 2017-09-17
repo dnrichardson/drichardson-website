@@ -32,6 +32,16 @@ Currently I conduct research on alternative splicing and abiotic stress response
     </item>
     
     <item>
+      <title>About Dale</title>
+      <link>/about/</link>
+      <pubDate>Sat, 10 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>Currently I&amp;rsquo;m a postdoc in the Plant Molecular Biology Laboratory at the Instituto Gulbenkian de Ciência (IGC), a research institution located just outside of Lisbon, Portugal. I primarily rely on R and a suite of bioinformatics tools to analyze large-scale genomic changes in response to abiotic stress in the model plant organism, Arabidopsis thaliana, commonly known as the &amp;ldquo;thale cress&amp;rdquo;.
+In transition Although I hold a special place in my heart for research science, it has become abundantly clear to me that I need to move into a new challenge.</description>
+    </item>
+    
+    <item>
       <title>Black &amp; Light Demo</title>
       <link>/post/hugo-block-and-light-theme/</link>
       <pubDate>Sun, 08 Jan 2017 00:00:00 +0000</pubDate>
@@ -61,19 +71,6 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <guid>/post/creating-a-new-theme/</guid>
       <description>Introduction This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
 We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
-    </item>
-    
-    <item>
-      <title>About Hugo</title>
-      <link>/about/</link>
-      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>Hugo is a static site engine written in Go.
-It makes use of a variety of open source projects including:
- Cobra Viper J Walter Weatherman Cast  Learn more and contribute on GitHub.
-Setup Some fun facts about Hugo:
- Built in Go Loosely inspired by Jekyll Primarily developed by spf13 on the train while commuting to and from Manhattan. Coded in Vim using spf13-vim  Have questions or suggestions?</description>
     </item>
     
     <item>
