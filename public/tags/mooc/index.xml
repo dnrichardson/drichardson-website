@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mooc on Dale Richardson</title>
+    <link>/tags/mooc/</link>
+    <description>Recent content in Mooc on Dale Richardson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/mooc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Predicting housing prices in Ames, Iowa - Captsone Project for Coursera Statistics with R Specialization</title>
+      <link>/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</link>
+      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</guid>
+      <description>Description Part 1 - Exploratory Data Analysis (EDA) Exploratory Data Analysis  Part 2 - Development and assessment of an initial model, following a semi-guided process of analysis Section 2.1 An Initial Model Section 2.2 Model Selection Section 2.3 Initial Model Residuals Section 2.4 Initial Model RMSE Section 2.5 Overfitting  Part 3 Development of a Final Model Section 3.1 Final Model Section 3.2 Transformation Section 3.3 Variable Interaction Section 3.</description>
+    </item>
+    
+  </channel>
+</rss>

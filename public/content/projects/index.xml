@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dale Richardson</title>
+    <link>/content/projects/</link>
+    <description>Recent content on Dale Richardson</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 14 Sep 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/content/projects/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Predicting housing prices in Ames, Iowa - Captsone Project</title>
+      <link>/content/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</link>
+      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/content/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</guid>
+      <description>suppressPackageStartupMessages(library(statsr)) suppressPackageStartupMessages(library(tidyverse)) suppressPackageStartupMessages(library(BAS)) suppressPackageStartupMessages(library(GGally)) suppressPackageStartupMessages(library(broom)) suppressPackageStartupMessages(library(MASS)) suppressPackageStartupMessages(library(plotly)) </description>
+    </item>
+    
+  </channel>
+</rss>

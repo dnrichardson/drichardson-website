@@ -1,0 +1,16 @@
+base
+statsr
+tidyverse
+ggplot2
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+BAS
+GGally
+broom
+MASS
+plotly

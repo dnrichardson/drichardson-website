@@ -1,7 +1,7 @@
 ---
 title: "Curriculum Vitae"
 author: "Dale Richardson"
-date: '2017-06-09T14:31:31+01:00'
+date: '2017-09-13'
 description: ''
 featured: ''
 featuredalt: ''

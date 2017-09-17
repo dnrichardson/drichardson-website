@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Predicting housing prices in Ames, Iowa - Captsone Project for Coursera Statistics with R Specialization</title>
+        <style>
+
+    html body {
+        font-family: Droid Sans, sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: orange;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid%20Sans">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/haskell.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/scala.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/swift.min.js"></script>  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.27" />
+        
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Predicting housing prices in Ames, Iowa - Captsone Project for Coursera Statistics with R Specialization</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/projects/">Projects</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:dalesan@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/dnrichardson/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/yogiwankinobi/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/dalesan/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/">Predicting housing prices in Ames, Iowa - Captsone Project for Coursera Statistics with R Specialization</a></h4>
+    <h5>September 14, 2017</h5>
+     <kbd class="item-tag">regression</kbd>  <kbd class="item-tag">mooc</kbd>  <kbd class="item-tag">coursera</kbd> 
+
+</div>
+
+
+    <br> <div class="text-justify"><div id="TOC">
+<ul>
+<li><a href="#description">Description</a></li>
+<li><a href="#part-1---exploratory-data-analysis-eda">Part 1 - Exploratory Data Analysis (EDA)</a><ul>
+<li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a></li>
+</ul></li>
+<li><a href="#part-2---development-and-assessment-of-an-initial-model-following-a-semi-guided-process-of-analysis">Part 2 - Development and assessment of an initial model, following a semi-guided process of analysis</a><ul>
+<li><a href="#section-2.1-an-initial-model">Section 2.1 An Initial Model</a></li>
+<li><a href="#section-2.2-model-selection">Section 2.2 Model Selection</a></li>
+<li><a href="#section-2.3-initial-model-residuals">Section 2.3 Initial Model Residuals</a></li>
+<li><a href="#section-2.4-initial-model-rmse">Section 2.4 Initial Model RMSE</a></li>
+<li><a href="#section-2.5-overfitting">Section 2.5 Overfitting</a></li>
+</ul></li>
+<li><a href="#part-3-development-of-a-final-model">Part 3 Development of a Final Model</a><ul>
+<li><a href="#section-3.1-final-model">Section 3.1 Final Model</a></li>
+<li><a href="#section-3.2-transformation">Section 3.2 Transformation</a></li>
+<li><a href="#section-3.3-variable-interaction">Section 3.3 Variable Interaction</a></li>
+<li><a href="#section-3.4-variable-selection">Section 3.4 Variable Selection</a></li>
+<li><a href="#section-3.5-model-testing">Section 3.5 Model Testing</a></li>
+</ul></li>
+<li><a href="#part-4-final-model-assessment">Part 4 Final Model Assessment</a><ul>
+<li><a href="#section-4.1-final-model-residual">Section 4.1 Final Model Residual</a></li>
+<li><a href="#section-4.2-final-model-rmse">Section 4.2 Final Model RMSE</a></li>
+<li><a href="#section-4.3-final-model-evaluation">Section 4.3 Final Model Evaluation</a></li>
+<li><a href="#section-4.4-final-model-validation">Section 4.4 Final Model Validation</a></li>
+</ul></li>
+<li><a href="#part-5-conclusion">Part 5 Conclusion</a></li>
+</ul>
+</div>
+
+<div id="description" class="section level2">
+<h2>Description</h2>
+<p>The following analysis constitutes my final submission for the <a href="https://www.coursera.org/specializations/statistics">Coursera Statistics with R Specialization</a> capstone project.</p>
+<p>The objective of the project was to build a multivariate linear model that could predict selling prices of houses in Ames, Iowa, for a fictitious real estate investment firm. Armed with a model, the investment firm could assess whether the true asking price for a house is under or over-valued. If the home is undervalued, it may be a good investment opportunity for the firm. The data used in this project were provided to us as <code>.Rdata</code> files and required little wrangling, if any. The codebook can be <a href="https://ww2.amstat.org/publications/jse/v19n3/decock/datadocumentation.txt">found here</a>.</p>
+<p>The flow of the document is as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Brief exploratory data analysis</li>
+<li>A quick and dirty first model along with diagnostics</li>
+<li>Development of a final model along with diagnostics</li>
+<li>Summary</li>
+</ol>
+<p>I am maintaining the question/answer format of the project for simplicity’s sake, i.e. I am choosing to be lazy.</p>
+</div>
+<div id="part-1---exploratory-data-analysis-eda" class="section level2">
+<h2>Part 1 - Exploratory Data Analysis (EDA)</h2>
+<p>When you first get your data, it’s very tempting to immediately begin fitting models and assessing how they perform. However, before you begin modeling, it’s absolutely essential to explore the structure of the data and the relationships between the variables in the data set.</p>
+<p>Do a detailed EDA of the ames_train data set, to learn about the structure of the data and the relationships between the variables in the data set (refer to Introduction to Probability and Data, Week 2, for a reminder about EDA if needed). Your EDA should involve creating and reviewing many plots/graphs and considering the patterns and relationships you see.</p>
+<p>After you have explored completely, submit the three graphs/plots that you found most informative during your EDA process, and briefly explain what you learned from each (why you found each informative).</p>
+<hr />
+<div id="exploratory-data-analysis" class="section level3">
+<h3>Exploratory Data Analysis</h3>
+<p>We’ll begin by loading necessary packages and the data, which was conveniently provided to us.</p>
+<pre class="r"><code>suppressPackageStartupMessages(library(statsr))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(GGally))
+suppressPackageStartupMessages(library(broom))
+suppressPackageStartupMessages(library(MASS))</code></pre>
+<pre class="r"><code>load(&quot;ames_train.Rdata&quot;)</code></pre>
+<div id="pairwise-plots-reveal-highly-skewed-distributions-in-selected-variables" class="section level4">
+<h4>Pairwise plots reveal highly skewed distributions in selected variables</h4>
+<p>To get a quick overview of some of the numeric variables present in the dataset, I thought it would be efficient to use the <code>ggpairs</code> function from the GGgally package. I selected the following variables:</p>
+<ol style="list-style-type: decimal">
+<li><code>area</code> - Total above ground living area</li>
+<li><code>price</code> - Sale price</li>
+<li><code>Lot.Area</code> - Lot size in square feet</li>
+<li><code>Mas.Vnr.Area</code> - Masonry veneer area in square feet</li>
+<li><code>Total.Bsmnt.SF</code> - Total basement square footage</li>
+</ol>
+<p>As can be seen in the plot below, all selected variables are right-skewed and positively correlated. From the scatter plots we can already see there are some outliers that we should take into account later. Most importantly, based on the information gleaned from this plot, we now know that we should log transform these variables in our model-building process.</p>
+<pre class="r"><code># Quick overview of some numeric variables
+ggpairs(ames_train, #mapping = aes(color = Sale.Condition),
+        columns = c(&quot;area&quot;, &quot;price&quot;, &quot;Lot.Area&quot;, &quot;Mas.Vnr.Area&quot;, &quot;Total.Bsmt.SF&quot;)) +
+        labs(title = &quot;Many of the numeric variables are right-skewed and correlated&quot;) +
+        theme_bw()</code></pre>
+<p><img src="/projects/duke_capstone/2017-09-14-predicting-housing-prices-in-ames-iowa-captsone-project_files/figure-html/creategraphs-1.png" width="960" /></p>
+</div>
+<div id="a-histogram-of-house-age-shows-that-nearly-30-of-houses-are-less-than-10-years-old" class="section level4">
+<h4>A histogram of house age shows that nearly 30% of houses are less than 10 years old</h4>
+<p>Given that the age of a house probably will have an impact on its selling price, I thought it would be prudent to examine the distibution of house ages present in our training data. After creating this new variable, <code>age</code>, we observe that nearly 30% of houses are less than 10 years old. Furthermore, the distribution of ages is multi-modal, with a tall peak between 0 and 25 years, a wider peak around 25 to 75 years and a flatter, wider peak at &gt; 75 years old. Using the age variable in a linear regression rather than the year built may be more informative for the model.</p>
+<pre class="r"><code># Distribution of house age
+ames_train %&gt;% mutate(age = max(ames_train$Year.Built) - Year.Built) %&gt;%
+        ggplot(aes(x = age)) + 
+        geom_histogram(bins = 30) + 
+        geom_vline(xintercept = 10, linetype = 2, color = &quot;blue&quot;) +
+        labs(title = &quot;Nearly 30% of houses in the training data are less than 10 years old&quot;,
+             caption = &quot;The distribution of ages is multi-modal. Blue vertical line indicates age of 10 years&quot;,
+             x = &quot;Age of House&quot;,
+             y = &quot;Count&quot;) +
+        theme_bw()</code></pre>
+<p><img src="/projects/duke_capstone/2017-09-14-predicting-housing-prices-in-ames-iowa-captsone-project_files/figure-html/age-hist-1.png" width="672" /></p>
+</div>
+<div id="some-neighborhoods-are-more-expensive-than-others" class="section level4">
+<h4>Some neighborhoods are more expensive than others</h4>
+<p>So the real-estate mantra goes, “Location, location, location”. Given that location plays such an important role in the sales price of a house, it was obviously important to look at how price relates to location in our training data. To do so, I created several boxplots of price (log-transformed) according to neighborhood. StoneBr and NridgHt have the highest median sales price of all neighborhoods. It is also important to note the high variability present in price in several of the neighborhoods. There is no doubt that neighborhood will be an important predictor of sales price.</p>
+<pre class="r"><code>## Price by Neighborhood
+ames_train %&gt;% 
+        ggplot(aes(y = log(price), x = Neighborhood)) +
+        geom_boxplot(aes(y = log(price), x = reorder(Neighborhood, price, FUN = median))) + 
+        coord_flip() +
+        theme_bw() +
+        labs(title = &quot;Neighborhood location has a large impact on sales price&quot;,
+             x = &quot;Neighborhood&quot;,
+             y = &quot;Log transform of Price&quot;,
+             caption = &quot;StoneBr and NridgHt have the highest median price. Several neighborhoods have highly variable prices.&quot;)</code></pre>
+<p><img src="/projects/duke_capstone/2017-09-14-predicting-housing-prices-in-ames-iowa-captsone-project_files/figure-html/unnamed-chunk-1-1.png" width="960" /></p>
+<hr />
+</div>
+</div>
+</div>
+<div id="part-2---development-and-assessment-of-an-initial-model-following-a-semi-guided-process-of-analysis" class="section level2">
+<h2>Part 2 - Development and assessment of an initial model, following a semi-guided process of analysis</h2>
+<div id="section-2.1-an-initial-model" class="section level3">
+<h3>Section 2.1 An Initial Model</h3>
+<p>In building a model, it is often useful to start by creating a simple, intuitive initial model based on the results of the exploratory data analysis. (Note: The goal at this stage is <strong>not</strong> to identify the “best” possible model but rather to choose a reasonable and understandable starting point. Later you will expand and revise this model to create your final model.</p>
+<p>Based on your EDA, select <em>at most</em> 10 predictor variables from “ames_train” and create a linear model for <code>price</code> (or a transformed version of price) using those variables. Provide the <em>R code</em> and the <em>summary output table</em> for your model, a <em>brief justification</em> for the variables you have chosen, and a <em>brief discussion</em> of the model results in context (focused on the variables that appear to be important predictors and how they relate to sales price).</p>
+<hr />
+<div id="brief-discussion-of-initial-model" class="section level4">
+<h4>Brief discussion of initial model</h4>
+<p>Based on my exploratory data analysis above, I decided to start with a simple set of variables that I suspected would have a strong predictive value on price. The variables I selected for this initial model were:</p>
+<ol style="list-style-type: decimal">
+<li><code>area</code></li>
+<li><code>age</code></li>
+<li><code>Neighborhood</code></li>
+</ol>
+<p>Because the distribution of <code>price</code>, <code>area</code> and <code>age</code> are skewed right, I decided to use their log-transform as predictors in the hopes that their distributions would be more normal. Though not shown below, I also explored a linear model that used the square-root of price and log-transformed predictors, which gave a neglible increase in adjusted R-squared values.</p>
+<p>That being said, this initial model based on the log transform of <code>price</code>, <code>area</code> and <code>age</code> has an adjusted R-squared value of <code>0.7984</code>, which isn’t too awful considering such a naive model. Three predictors can explain roughly <code>80%</code> of the variance in sale price and all predictors are statistically significant, barring some levels of the <code>Neighborhood</code> factor. The residuals of this first model are roughly normally distributed (histogram not shown), but there is definitely at least one outlier (min value of <code>-1.91236</code>). The F-statistic (the ratio of sum of squares of the regression over the sum of squares of the error) of <code>142.3</code> and associated p-value of nearly 0 is highly suggestive of these predictors having a very real effect on price.</p>
+<p>Briefly, as an example interpretation of the coefficients of the model, for each unit increase in <code>area</code>, there is a corresponding increase of <span class="math inline">\(exp(0.61) = 1.84\)</span> dollars in sales price. In contrast, for each unit increase in <code>age</code>, there is a corresponding decrease of <span class="math inline">\(exp(0.139) = 1.15\)</span> dollars in sales price. Regarding the <code>Neighborhood</code> there are concomitant increases or decreases in price accordingly.</p>
+<pre class="r"><code># select variables of interest
+ames_train_selected &lt;- ames_train %&gt;% 
+        mutate(age = max(ames_train$Year.Built) - Year.Built) %&gt;%
+        filter(Neighborhood != &quot;Landmrk&quot;) %&gt;% # filter out Landmrk neighborhood which is empty in the training data and only causes problems for the predict function later on
+        dplyr::select(price, area, age, Neighborhood)
+
+# build model -- add 1 to age to avoid taking log of 0
+m1 &lt;- lm(log(price) ~ log(area) + log(age + 1) + Neighborhood, data = ames_train_selected)
+
+# print summary
+summary(m1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(price) ~ log(area) + log(age + 1) + Neighborhood, 
+##     data = ames_train_selected)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.91236 -0.09429  0.00904  0.10910  0.60821 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)          8.02111    0.17051  47.042  &lt; 2e-16 ***
+## log(area)            0.60975    0.02171  28.085  &lt; 2e-16 ***
+## log(age + 1)        -0.13928    0.01217 -11.440  &lt; 2e-16 ***
+## NeighborhoodBlueste -0.07189    0.12470  -0.576 0.564433    
+## NeighborhoodBrDale  -0.26681    0.08575  -3.112 0.001916 ** 
+## NeighborhoodBrkSide -0.01736    0.07154  -0.243 0.808349    
+## NeighborhoodClearCr  0.15091    0.08149   1.852 0.064346 .  
+## NeighborhoodCollgCr  0.04807    0.06104   0.788 0.431151    
+## NeighborhoodCrawfor  0.19389    0.07236   2.679 0.007500 ** 
+## NeighborhoodEdwards -0.09523    0.06585  -1.446 0.148468    
+## NeighborhoodGilbert -0.03333    0.06353  -0.525 0.600007    
+## NeighborhoodGreens   0.36975    0.11216   3.297 0.001014 ** 
+## NeighborhoodGrnHill  0.49317    0.14582   3.382 0.000748 ***
+## NeighborhoodIDOTRR  -0.24316    0.07264  -3.347 0.000847 ***
+## NeighborhoodMeadowV -0.30863    0.07758  -3.978 7.46e-05 ***
+## NeighborhoodMitchel  0.07592    0.06612   1.148 0.251159    
+## NeighborhoodNAmes    0.04916    0.06446   0.763 0.445855    
+## NeighborhoodNoRidge  0.24246    0.06924   3.502 0.000483 ***
+## NeighborhoodNPkVill -0.02753    0.11241  -0.245 0.806608    
+## NeighborhoodNridgHt  0.25247    0.06262   4.032 5.98e-05 ***
+## NeighborhoodNWAmes   0.05956    0.06776   0.879 0.379602    
+## NeighborhoodOldTown -0.12867    0.06954  -1.850 0.064577 .  
+## NeighborhoodSawyer   0.04638    0.06669   0.696 0.486882    
+## NeighborhoodSawyerW -0.05147    0.06465  -0.796 0.426144    
+## NeighborhoodSomerst  0.06817    0.06108   1.116 0.264645    
+## NeighborhoodStoneBr  0.33483    0.07127   4.698 3.01e-06 ***
+## NeighborhoodSWISU   -0.08017    0.08515  -0.942 0.346640    
+## NeighborhoodTimber   0.21798    0.07193   3.030 0.002508 ** 
+## NeighborhoodVeenker  0.23137    0.08482   2.728 0.006492 ** 
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1888 on 971 degrees of freedom
+## Multiple R-squared:  0.8041, Adjusted R-squared:  0.7984 
+## F-statistic: 142.3 on 28 and 971 DF,  p-value: &lt; 2.2e-16</code></pre>
+<hr />
+</div>
+</div>
+<div id="section-2.2-model-selection" class="section level3">
+<h3>Section 2.2 Model Selection</h3>
+<p>Now either using <code>BAS</code> another stepwise selection procedure choose the “best” model you can, using your initial model as your starting point. Try at least two different model selection methods and compare their results. Do they both arrive at the same model or do they disagree? What do you think this means?</p>
+<hr />
+<p>The two model selection procedures I will use are AIC and BIC. Both selection procedures are available through the <code>MASS</code> package. The parameter <span class="math inline">\(k\)</span> controls whether or not the function will return the AIC (<span class="math inline">\(k = 2\)</span>) or the BIC (<span class="math inline">\(k = log(n)\)</span>).</p>
+<p>In my case, both model selection methods arrived at the same conclusion: include all predictor variables. The reason for this is because the predictors I selected contribute strong preditive power on sales price and removing any one of them reduces the efficacy of the model. I suspect if I had included a handful of other variables, my results would have been different.</p>
+<pre class="r"><code># AIC
+myAIC &lt;- stepAIC(m1, k = 2)</code></pre>
+<pre><code>## Start:  AIC=-3305.05
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+##                Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                      34.630 -3305.0
+## - log(age + 1)  1    4.6675 39.297 -3180.6
+## - Neighborhood 26   13.6493 48.279 -3024.8
+## - log(area)     1   28.1296 62.759 -2712.5</code></pre>
+<pre class="r"><code># show anova table to see initial vs final model
+myAIC$anova</code></pre>
+<pre><code>## Stepwise Model Path 
+## Analysis of Deviance Table
+## 
+## Initial Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+## Final Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+## 
+##   Step Df Deviance Resid. Df Resid. Dev       AIC
+## 1                        971    34.6296 -3305.046</code></pre>
+<pre class="r"><code># BIC
+myBIC &lt;- stepAIC(m1, k = log(nrow(ames_train_selected)))</code></pre>
+<pre><code>## Start:  AIC=-3162.72
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+##                Df Sum of Sq    RSS     AIC
+## &lt;none&gt;                      34.630 -3162.7
+## - log(age + 1)  1    4.6675 39.297 -3043.2
+## - Neighborhood 26   13.6493 48.279 -3010.0
+## - log(area)     1   28.1296 62.759 -2575.0</code></pre>
+<pre class="r"><code>#show anova table to see initial vs final model
+myBIC$anova</code></pre>
+<pre><code>## Stepwise Model Path 
+## Analysis of Deviance Table
+## 
+## Initial Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+## Final Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood
+## 
+## 
+##   Step Df Deviance Resid. Df Resid. Dev       AIC
+## 1                        971    34.6296 -3162.721</code></pre>
+<hr />
+</div>
+<div id="section-2.3-initial-model-residuals" class="section level3">
+<h3>Section 2.3 Initial Model Residuals</h3>
+<p>One way to assess the performance of a model is to examine the model’s residuals. In the space below, create a residual plot for your preferred model from above and use it to assess whether your model appears to fit the data well. Comment on any interesting structure in the residual plot (trend, outliers, etc.) and briefly discuss potential implications it may have for your model and inference / prediction you might produce.</p>
+<hr />
+<p>According the model diagnostic plots shown below, it appears that my first model does not violate any of the assumptions of linear regression and that the model is good at explaining the data. In the first plot, Residuals vs Fitted, we see that the residuals are randomly scattered about the zero line with no underlying structure present. While there is an outlier present, the famous point <code>428</code> (old house, incredibly low sale price of $12,784), it is not a high leverage point as it does not have a large Cook’s distance value, so leaving it in the dataset or removing it is a matter of choice (removing it actually gives a better adjusted R-squared value of <code>0.8131</code>). The Scale-Location plot indicates that the residuals have constant variance and the normal Q-Q plot demonstrates that the residuals are normally distributed. In summary, our model fits the data very well and there are no red flags.</p>
+<pre class="r"><code># create augmented dataframe from m1 object
+aug_m1 &lt;- augment(m1)
+
+# show first rows
+head(aug_m1)</code></pre>
+<pre><code>##   log.price. log.area. log.age...1. Neighborhood  .fitted    .se.fit
+## 1   11.74404  6.752270     4.276666        SWISU 11.46248 0.05569274
+## 2   11.84582  6.955593     3.295837      Edwards 11.70801 0.02498225
+## 3   11.73527  6.908755     4.394449       IDOTRR 11.37851 0.03196256
+## 4   11.64395  6.946014     4.709530      OldTown 11.47183 0.02303001
+## 5   12.33271  7.417580     2.302585       NWAmes 12.28284 0.03285190
+## 6   12.19854  7.561122     2.079442      Edwards 12.24665 0.03161959
+##        .resid       .hat    .sigma      .cooksd .std.resid
+## 1  0.28155473 0.08696988 0.1887091 7.996465e-03  1.5602929
+## 2  0.13780937 0.01749987 0.1888933 3.328900e-04  0.7362042
+## 3  0.35675530 0.02864539 0.1885883 3.736059e-03  1.9167585
+## 4  0.17212185 0.01487168 0.1888640 4.389552e-04  0.9182807
+## 5  0.04986621 0.03026165 0.1889391 7.736954e-05  0.2681421
+## 6 -0.04810558 0.02803395 0.1889396 6.639672e-05 -0.2583781</code></pre>
+<pre class="r"><code># plot the model using base R
+layout(matrix(c(1,2,3,4),2,2)) # optional 4 graphs/page 
+plot(m1)</code></pre>
+<p><img src="/projects/duke_capstone/2017-09-14-predicting-housing-prices-in-ames-iowa-captsone-project_files/figure-html/model_resid-1.png" width="960" /></p>
+<pre class="r"><code># double check to ensure no high leverage points exist according to cook&#39;s distance (threshold d &gt; 1)
+summary(aug_m1$.cooksd)</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 0.000e+00 3.792e-05 1.943e-04 1.037e-03 7.520e-04 6.407e-02</code></pre>
+<hr />
+</div>
+<div id="section-2.4-initial-model-rmse" class="section level3">
+<h3>Section 2.4 Initial Model RMSE</h3>
+<p>You can calculate it directly based on the model output. Be specific about the units of your RMSE (depending on whether you transformed your response variable). The value you report will be more meaningful if it is in the original units (dollars).</p>
+<hr />
+<p>Given that I had log-transformed all numeric variables in this first model, after making predictions using the model, I back-transformed the predictions to a non-log scale so that the price would once again be in dollars. I wrote a quick function to calculate the RMSE, which is <code>$36572.09</code>. What this value tells us is that on average our predictions are off by nearly $37,000. The RMSE for the test data set should be even higher. As of now, this is the RMSE to beat.</p>
+<pre class="r"><code># define function to calculate RMSE
+# inputs are vectors of actual y-vals and predicted y-vals
+RMSE &lt;- function(actual, pred){
+        
+    sqrt(mean((actual - pred)^2, na.rm = TRUE))
+}
+
+# Use the model to make predictions (training data only)
+preds_train &lt;- predict(m1, ames_train_selected)
+
+# back-transform the predictions to get to non-log scale
+preds_train &lt;- exp(preds_train)
+
+# calculate RMSE
+(rmse &lt;- RMSE(ames_train_selected$price, preds_train))</code></pre>
+<pre><code>## [1] 36572.09</code></pre>
+<hr />
+</div>
+<div id="section-2.5-overfitting" class="section level3">
+<h3>Section 2.5 Overfitting</h3>
+<p>The process of building a model generally involves starting with an initial model (as you have done above), identifying its shortcomings, and adapting the model accordingly. This process may be repeated several times until the model fits the data reasonably well. However, the model may do well on training data but perform poorly out-of-sample (meaning, on a dataset other than the original training data) because the model is overly-tuned to specifically fit the training data. This is called “overfitting.” To determine whether overfitting is occurring on a model, compare the performance of a model on both in-sample and out-of-sample data sets. To look at performance of your initial model on out-of-sample data, you will use the data set <code>ames_test</code>.</p>
+<pre class="r"><code>load(&quot;ames_test.Rdata&quot;)</code></pre>
+<p>Use your model from above to generate predictions for the housing prices in the test data set. Are the predictions significantly more accurate (compared to the actual sales prices) for the training data than the test data? Why or why not? Briefly explain how you determined that (what steps or processes did you use)?</p>
+<hr />
+<p>First, I must mention that the training data contained an empty Neighborhood level, <code>Landmrk</code>, that was not present in the test data set. I had to drop this level from the training data and retrain the model in order to make predictions on the test data. This is a known issue (see: <a href="https://www.coursera.org/learn/statistics-project/discussions/weeks/8/threads/-a4MKxA6Eee-aRJBJZ4UcA">here for discussion on the forums</a>.</p>
+<p>In contrast to my expectations, the test data RMSE (<code>34261.07</code>) is actually <code>$2311.02</code> <strong>lower</strong> than the training RMSE (<code>36572.09</code>). We could spend time randomly resampling the training dataset to generate new hold-out samples for testing and calculate the distribution of RMSE values on these new test sets to see how the RMSE varies, but it definitely looks like our model does <em>NOT overfit</em> the training data. If our model were indeed overfitting the training data, we would expectly a wildly higher RMSE on the test data.</p>
+<p>Keeping the model simple by including only three highly predictive variables seems to have been a viable first strategy.</p>
+<pre class="r"><code># first create the age variable for the test data
+ames_test_selected &lt;- ames_test %&gt;% 
+        mutate(age = max(ames_test$Year.Built) - Year.Built) %&gt;%
+        filter(Neighborhood != &quot;Landmrk&quot;) %&gt;%
+        dplyr::select(price, area, age, Neighborhood)
+
+# predict
+preds_test &lt;- predict(m1, newdata = ames_test_selected)
+
+# back-transform to non-log
+preds_test &lt;- exp(preds_test)
+
+# calculate RMSE
+(test_rmse &lt;- RMSE(ames_test_selected$price, preds_test))</code></pre>
+<pre><code>## [1] 34261.07</code></pre>
+<hr />
+<p><strong>Note to the learner:</strong> If in real-life practice this out-of-sample analysis shows evidence that the training data fits your model a lot better than the test data, it is probably a good idea to go back and revise the model (usually by simplifying the model) to reduce this overfitting. For simplicity, we do not ask you to do this on the assignment, however.</p>
+</div>
+</div>
+<div id="part-3-development-of-a-final-model" class="section level2">
+<h2>Part 3 Development of a Final Model</h2>
+<p>Now that you have developed an initial model to use as a baseline, create a final model with <em>at most</em> 20 variables to predict housing prices in Ames, IA, selecting from the full array of variables in the dataset and using any of the tools that we introduced in this specialization.</p>
+<p>Carefully document the process that you used to come up with your final model, so that you can answer the questions below.</p>
+<div id="section-3.1-final-model" class="section level3">
+<h3>Section 3.1 Final Model</h3>
+<p>Provide the summary table for your model.</p>
+<hr />
+<p>Well, given that the baseline model I created has performed so well, I will definitely include those variables in the final model. Based on the <a href="https://ww2.amstat.org/publications/jse/v19n3/decock/datadocumentation.txt">codebook</a>, I think the following variables might be good predictors of housing price:</p>
+<ol style="list-style-type: decimal">
+<li><code>Lot.Config</code> - The configuration of the lot: inside, corner, cul-de-sac, etc.</li>
+<li><code>Bldg.Type</code> - Type of dwelling</li>
+<li><code>House.Style</code> - Style of dwelling</li>
+<li><code>Overall.Qual</code> - Rates the overall material and finish of the house</li>
+<li><code>Overall.Cond</code> - Rates the overall condition of the house</li>
+<li><code>Exter.Qual</code> - Evaluates the quality of the material on the exterior</li>
+<li><code>Mas.Vnr.Area</code> - Masonry veneer area in square feet</li>
+<li><code>Central.Air</code> - Central air conditioning</li>
+<li><code>Bedroom.AbvGr</code> - Number of bedrooms above ground</li>
+<li><code>Full.Bath</code> - Number of full bathrooms above ground</li>
+<li><code>Half.Bath</code> - Number of half bathrooms above ground</li>
+<li><code>Functional</code> - Home functionality (Assume typical unless deductions are warranted)</li>
+<li><code>Kitchen.Qual</code> - Kitchen Quality</li>
+<li><code>Garage.Type</code> - Garage location</li>
+</ol>
+<pre class="r"><code># select relevant columns from training data
+
+ames_train_selected &lt;- ames_train %&gt;% 
+        mutate(age = max(ames_train$Year.Built) - Year.Built) %&gt;%
+        filter(Neighborhood != &quot;Landmrk&quot;) %&gt;% 
+               #Heating != &quot;OthW&quot;,
+               #Sale.Condition != &quot;AdjLand&quot;) %&gt;% 
+        dplyr::select(price, area, age, Neighborhood, Mas.Vnr.Area, Lot.Config, Bldg.Type, House.Style, 
+                      Overall.Qual, Overall.Cond, Exter.Qual,
+                      Central.Air, Heating, Bedroom.AbvGr, Full.Bath, Half.Bath,
+                      Functional, Kitchen.Qual, Garage.Type)
+
+# toss NA values
+
+ames_train_selected &lt;- na.omit(ames_train_selected)
+
+# build model -- add 1 to age to avoid taking log of 0
+m2 &lt;- lm(log(price) ~ log(area) + log(age + 1) + Neighborhood + log(Mas.Vnr.Area + 1) +
+                 Lot.Config + Bldg.Type + House.Style +
+                 Overall.Qual + Overall.Cond + Exter.Qual +
+                 Central.Air  + Bedroom.AbvGr +
+                 Full.Bath + Half.Bath +
+                 Functional + Kitchen.Qual + Garage.Type, 
+         data = ames_train_selected)
+
+# print summary
+summary(m2)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = log(price) ~ log(area) + log(age + 1) + Neighborhood + 
+##     log(Mas.Vnr.Area + 1) + Lot.Config + Bldg.Type + House.Style + 
+##     Overall.Qual + Overall.Cond + Exter.Qual + Central.Air + 
+##     Bedroom.AbvGr + Full.Bath + Half.Bath + Functional + Kitchen.Qual + 
+##     Garage.Type, data = ames_train_selected)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.40340 -0.06612  0.00064  0.07126  0.49580 
+## 
+## Coefficients:
+##                        Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)            6.815250   0.245557  27.754  &lt; 2e-16 ***
+## log(area)              0.654933   0.032136  20.380  &lt; 2e-16 ***
+## log(age + 1)          -0.082623   0.011477  -7.199 1.30e-12 ***
+## NeighborhoodBlueste    0.051369   0.094378   0.544 0.586377    
+## NeighborhoodBrDale    -0.050918   0.070859  -0.719 0.472589    
+## NeighborhoodBrkSide   -0.049287   0.056339  -0.875 0.381907    
+## NeighborhoodClearCr    0.126344   0.062577   2.019 0.043788 *  
+## NeighborhoodCollgCr    0.017749   0.047119   0.377 0.706494    
+## NeighborhoodCrawfor    0.108463   0.055029   1.971 0.049034 *  
+## NeighborhoodEdwards   -0.057379   0.051076  -1.123 0.261579    
+## NeighborhoodGilbert    0.018450   0.050195   0.368 0.713291    
+## NeighborhoodGreens     0.205037   0.084264   2.433 0.015162 *  
+## NeighborhoodGrnHill    0.438291   0.105503   4.154 3.58e-05 ***
+## NeighborhoodIDOTRR    -0.149267   0.058732  -2.541 0.011209 *  
+## NeighborhoodMeadowV   -0.085298   0.065764  -1.297 0.194960    
+## NeighborhoodMitchel    0.059314   0.051651   1.148 0.251129    
+## NeighborhoodNAmes     -0.002833   0.050480  -0.056 0.955263    
+## NeighborhoodNoRidge    0.165205   0.053103   3.111 0.001925 ** 
+## NeighborhoodNPkVill    0.102015   0.087160   1.170 0.242143    
+## NeighborhoodNridgHt    0.164189   0.047787   3.436 0.000618 ***
+## NeighborhoodNWAmes    -0.022306   0.052167  -0.428 0.669050    
+## NeighborhoodOldTown   -0.136041   0.054947  -2.476 0.013479 *  
+## NeighborhoodSawyer     0.008428   0.052206   0.161 0.871786    
+## NeighborhoodSawyerW   -0.028246   0.049639  -0.569 0.569481    
+## NeighborhoodSomerst    0.072734   0.045941   1.583 0.113730    
+## NeighborhoodStoneBr    0.217970   0.053177   4.099 4.53e-05 ***
+## NeighborhoodSWISU     -0.017836   0.067612  -0.264 0.791995    
+## NeighborhoodTimber     0.075109   0.054331   1.382 0.167196    
+## NeighborhoodVeenker    0.067912   0.064560   1.052 0.293120    
+## log(Mas.Vnr.Area + 1)  0.001610   0.002173   0.741 0.459116    
+## Lot.ConfigCulDSac      0.045979   0.020298   2.265 0.023740 *  
+## Lot.ConfigFR2         -0.045599   0.027164  -1.679 0.093568 .  
+## Lot.ConfigFR3         -0.123952   0.063186  -1.962 0.050115 .  
+## Lot.ConfigInside      -0.013387   0.012385  -1.081 0.280044    
+## Bldg.Type2fmCon        0.073752   0.038673   1.907 0.056839 .  
+## Bldg.TypeDuplex       -0.104076   0.031679  -3.285 0.001059 ** 
+## Bldg.TypeTwnhs        -0.168545   0.034573  -4.875 1.29e-06 ***
+## Bldg.TypeTwnhsE       -0.094714   0.021681  -4.369 1.40e-05 ***
+## House.Style1.5Unf      0.084184   0.053207   1.582 0.113967    
+## House.Style1Story      0.097619   0.020659   4.725 2.67e-06 ***
+## House.Style2.5Unf      0.005616   0.049170   0.114 0.909091    
+## House.Style2Story     -0.021557   0.020870  -1.033 0.301919    
+## House.StyleSFoyer      0.190738   0.035658   5.349 1.13e-07 ***
+## House.StyleSLvl        0.101522   0.029730   3.415 0.000668 ***
+## Overall.Qual           0.055633   0.006839   8.134 1.41e-15 ***
+## Overall.Cond           0.055826   0.005361  10.413  &lt; 2e-16 ***
+## Exter.QualFa          -0.006608   0.066408  -0.100 0.920760    
+## Exter.QualGd          -0.041750   0.032413  -1.288 0.198062    
+## Exter.QualTA          -0.040824   0.037237  -1.096 0.273229    
+## Central.AirY           0.205058   0.027663   7.413 2.91e-13 ***
+## Bedroom.AbvGr         -0.031445   0.008830  -3.561 0.000389 ***
+## Full.Bath              0.004105   0.014894   0.276 0.782895    
+## Half.Bath              0.012486   0.013451   0.928 0.353517    
+## FunctionalMaj2        -0.175792   0.121518  -1.447 0.148356    
+## FunctionalMin1        -0.051182   0.080719  -0.634 0.526195    
+## FunctionalMin2        -0.051456   0.078770  -0.653 0.513767    
+## FunctionalMod         -0.030276   0.081114  -0.373 0.709046    
+## FunctionalSal         -0.549597   0.161977  -3.393 0.000722 ***
+## FunctionalTyp          0.027884   0.073077   0.382 0.702874    
+## Kitchen.QualFa        -0.097519   0.048216  -2.023 0.043423 *  
+## Kitchen.QualGd        -0.066197   0.025035  -2.644 0.008334 ** 
+## Kitchen.QualPo         0.067013   0.153457   0.437 0.662442    
+## Kitchen.QualTA        -0.100733   0.028098  -3.585 0.000356 ***
+## Garage.TypeAttchd      0.017036   0.047054   0.362 0.717393    
+## Garage.TypeBasment    -0.062587   0.065126  -0.961 0.336805    
+## Garage.TypeBuiltIn    -0.047950   0.051460  -0.932 0.351703    
+## Garage.TypeCarPort     0.079087   0.144648   0.547 0.584687    
+## Garage.TypeDetchd      0.012112   0.048284   0.251 0.801990    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1357 on 879 degrees of freedom
+## Multiple R-squared:  0.8972, Adjusted R-squared:  0.8894 
+## F-statistic: 114.5 on 67 and 879 DF,  p-value: &lt; 2.2e-16</code></pre>
+<hr />
+</div>
+<div id="section-3.2-transformation" class="section level3">
+<h3>Section 3.2 Transformation</h3>
+<p>Did you decide to transform any variables? Why or why not? Explain in a few sentences.</p>
+<hr />
+<p>The only variables I transformed were the same as before, I took the log-transform of <code>price</code>, <code>area</code> and <code>age</code> because they are right-skewed.</p>
+<hr />
+</div>
+<div id="section-3.3-variable-interaction" class="section level3">
+<h3>Section 3.3 Variable Interaction</h3>
+<p>Did you decide to include any variable interactions? Why or why not? Explain in a few sentences.</p>
+<hr />
+<p>I did not include any variable interactions in the model as this would introduce unncessary complexity. Furthermore, I do not have any particular interaction hypotheses to test between the variables. As a trial, I tested an interaction between <code>Neighborhood</code> and <code>Overall.Qual</code>, but there was no improvement in the adjusted R-squared of the model. Therefore, I will go with a more parsimonious model.</p>
+<hr />
+</div>
+<div id="section-3.4-variable-selection" class="section level3">
+<h3>Section 3.4 Variable Selection</h3>
+<p>What method did you use to select the variables you included? Why did you select the method you used? Explain in a few sentences.</p>
+<hr />
+<p>I opted to use the <code>stepAIC</code> method from the <code>MASS</code> package with the stepwise direction set to the default of <code>both</code>. Using the <code>BIC</code> failed with “errors about number of rows in use has changed”. Rather than spend more time debugging this error, I chose to move ahead with the AIC. This new model with fewer variables has only a slightly higher adjusted R-squared value of <code>0.8896</code>. The variables that were removed were the following:</p>
+<ol style="list-style-type: decimal">
+<li><code>Exter.Qual</code></li>
+<li><code>Full.Bath</code></li>
+<li><code>Half.Bath</code></li>
+<li><code>Mas.Vnr.Area</code></li>
+</ol>
+<pre class="r"><code># AIC
+myAIC &lt;- stepAIC(m2, k = 2, trace = 0)
+
+# show anova table to see initial vs final model
+myAIC$anova</code></pre>
+<pre><code>## Stepwise Model Path 
+## Analysis of Deviance Table
+## 
+## Initial Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood + log(Mas.Vnr.Area + 
+##     1) + Lot.Config + Bldg.Type + House.Style + Overall.Qual + 
+##     Overall.Cond + Exter.Qual + Central.Air + Bedroom.AbvGr + 
+##     Full.Bath + Half.Bath + Functional + Kitchen.Qual + Garage.Type
+## 
+## Final Model:
+## log(price) ~ log(area) + log(age + 1) + Neighborhood + Lot.Config + 
+##     Bldg.Type + House.Style + Overall.Qual + Overall.Cond + Central.Air + 
+##     Bedroom.AbvGr + Functional + Kitchen.Qual + Garage.Type
+## 
+## 
+##                      Step Df    Deviance Resid. Df Resid. Dev       AIC
+## 1                                              879   16.19277 -3717.091
+## 2            - Exter.Qual  3 0.036663704       882   16.22943 -3720.950
+## 3             - Full.Bath  1 0.001054183       883   16.23049 -3722.888
+## 4             - Half.Bath  1 0.014334271       884   16.24482 -3724.052
+## 5 - log(Mas.Vnr.Area + 1)  1 0.015111483       885   16.25993 -3725.172</code></pre>
+<pre class="r"><code>## rebuild the model, even though the myAIC object is a lm object
+m3 &lt;- lm(log(price) ~ log(area) + log(age + 1) + Neighborhood + 
+    Lot.Config + Bldg.Type + House.Style + Overall.Qual + Overall.Cond + 
+    Central.Air + Bedroom.AbvGr + Functional + Kitchen.Qual + 
+    Garage.Type, data = ames_train_selected)
+
+## make predictions on training
+train_preds &lt;- exp(predict(m3))
+print(paste(&quot;TRAINING DATA RMSE&quot;, round(RMSE(ames_train_selected$price, train_preds), digits = 2)))</code></pre>
+<pre><code>## [1] &quot;TRAINING DATA RMSE 26992.11&quot;</code></pre>
+<hr />
+</div>
+<div id="section-3.5-model-testing" class="section level3">
+<h3>Section 3.5 Model Testing</h3>
+<p>How did testing the model on out-of-sample data affect whether or how you changed your model? Explain in a few sentences.</p>
+<hr />
+<p>Once again, the RMSE (<code>23537.28</code>) on the hold-out test data was lower than on the training data (<code>26992.11</code>) itself. Given that the RMSE is not worse than the training data RMSE, I have not changed my model in any way. The only disconcerting thing is that several factor levels had to be filtered out of the training and testing data because of persistent problems when using the predict function. There is an issue of levels present only in the training or testing data but not both – and this causes the predict function to fail. The data should have been split properly to avoid this.</p>
+<pre class="r"><code>##  build the test set 
+ames_test_selected &lt;- ames_test %&gt;% 
+        mutate(age = max(ames_test$Year.Built) - Year.Built) %&gt;%
+        filter(Neighborhood != &quot;Landmrk&quot;,
+               House.Style != &quot;2.5Fin&quot;) %&gt;% 
+               #Heating != &quot;OthW&quot;,
+               #Sale.Condition != &quot;AdjLand&quot;) %&gt;% 
+        dplyr::select(price, area, age, Neighborhood, Mas.Vnr.Area, Lot.Config, Bldg.Type, House.Style, 
+                      Overall.Qual, Overall.Cond, Exter.Qual,
+                      Central.Air, Heating, Bedroom.AbvGr, Full.Bath, Half.Bath,
+                      Functional, Kitchen.Qual, Garage.Type)
+
+ames_test_selected &lt;- na.omit(ames_test_selected)
+
+## Make predictions
+test_preds &lt;- exp(predict(m3, newdata = ames_test_selected))
+
+
+# calculate RMSE
+print(paste(&quot;TEST DATA RMSE&quot;, round(RMSE(ames_test_selected$price, test_preds), digits = 2)))</code></pre>
+<pre><code>## [1] &quot;TEST DATA RMSE 23537.28&quot;</code></pre>
+<hr />
+</div>
+</div>
+<div id="part-4-final-model-assessment" class="section level2">
+<h2>Part 4 Final Model Assessment</h2>
+<div id="section-4.1-final-model-residual" class="section level3">
+<h3>Section 4.1 Final Model Residual</h3>
+<p>For your final model, create and briefly interpret an informative plot of the residuals.</p>
+<pre class="r"><code># plot the final model using base R
+layout(matrix(c(1,2,3,4),2,2)) # optional 4 graphs/page 
+plot(m3)</code></pre>
+<p><img src="/projects/duke_capstone/2017-09-14-predicting-housing-prices-in-ames-iowa-captsone-project_files/figure-html/unnamed-chunk-2-1.png" width="960" /></p>
+<hr />
+<p>Based on the plots above, the residuals are nearly normally distributed and have a constant variance around 0. There are no high-leverage points, but we do have a few outlier points that may influence the regression (points 405, 291 and 168). These outliers are all below the 0 line, indicating the the model has overestimated the price for these observations.</p>
+<hr />
+</div>
+<div id="section-4.2-final-model-rmse" class="section level3">
+<h3>Section 4.2 Final Model RMSE</h3>
+<p>For your final model, calculate and briefly comment on the RMSE.</p>
+<hr />
+<p>As I mentioned above, the RMSE (<code>23537.28</code>) on the test data was lower than the training data (<code>26992.11</code>) itself. We saw this happen in the simpler model that included only <code>area</code>, <code>age</code> and <code>Neighborhood</code>. It appears that this new model also does not overfit the data.</p>
+<hr />
+</div>
+<div id="section-4.3-final-model-evaluation" class="section level3">
+<h3>Section 4.3 Final Model Evaluation</h3>
+<p>What are some strengths and weaknesses of your model?</p>
+<hr />
+<p>One of the major weakenesses of the model is the issue of the factor levels for certain variables being inconsistent across the training and test data. Having to filter out the offending levels with dplyr calls may not be the best approach to solving the problem. What could have been done instead was to rowbind the training and test datasets together and randomly split them into a new training and testing set using appropriate functions in the <code>caTools</code> or <code>caret</code> packages. Unfortunately, this is beyond the scope of this assignment.</p>
+<p>Another potential weakness of the model is that there are a few outliers present in the data that could have some impact on the predictive power/accuracy of the model. A few observations had large negative residuals indicating that the model over-predicted the sales price. However, given that the model produces a relatively low RMSE on the test dataset compared to the training data, which is the opposite of what we expect, I would venture to say that the outliers have neglible impact on the model’s predictions.</p>
+<p>Therefore, one of the major strengths of the model is that not only is it simple, but also that it does not overfit the training data.</p>
+<hr />
+</div>
+<div id="section-4.4-final-model-validation" class="section level3">
+<h3>Section 4.4 Final Model Validation</h3>
+<p>Testing your final model on a separate, validation data set is a great way to determine how your model will perform in real-life practice.</p>
+<p>You will use the “ames_validation” dataset to do some additional assessment of your final model. Discuss your findings, be sure to mention: * What is the RMSE of your final model when applied to the validation data?<br />
+* How does this value compare to that of the training data and/or testing data? * What percentage of the 95% predictive confidence (or credible) intervals contain the true price of the house in the validation data set?<br />
+* From this result, does your final model properly reflect uncertainty?</p>
+<pre class="r"><code>load(&quot;ames_validation.Rdata&quot;)</code></pre>
+<hr />
+<p>The RMSE of the final model on the validation data is <code>22322.93</code>. This is the lowest RMSE observed thus far and is a good indication that our model is performing well. The true price of the validation data set is contained within a 95% prediction interval of 689/712 times for a total of 96.7%. Based on this result, our final model definitely reflects uncertainty as our results are entirely in agreement with the definition of a confidence/prediction interval: we expect that 95% of the confidence intervals created would contain the true value.</p>
+<pre class="r"><code>#build the validation set
+ames_val_selected &lt;- ames_validation %&gt;% 
+        mutate(age = max(ames_validation$Year.Built) - Year.Built) %&gt;%
+        filter(Neighborhood != &quot;Landmrk&quot;, # handle missing levels in training data
+               House.Style != &quot;2.5Fin&quot;,
+               Exter.Cond != &quot;Po&quot;,
+               Foundation != &quot;Wood&quot;, 
+               Heating != &quot;OthW&quot; | Heating != &quot;Floor&quot;) %&gt;% 
+        dplyr::select(price, area, age, Neighborhood, Lot.Config, Bldg.Type, House.Style, 
+                      Overall.Qual, Overall.Cond, Exter.Qual, Exter.Cond, Foundation,
+                      Central.Air, Heating, Bedroom.AbvGr, Full.Bath, Half.Bath,
+                      Functional, Kitchen.Qual, Garage.Type, Sale.Condition)
+
+ames_val_selected &lt;- na.omit(ames_val_selected)
+
+# val preds
+val_preds &lt;- as.data.frame(exp(predict(m3, newdata = ames_val_selected, interval = &quot;prediction&quot;)))
+
+# calculate RMSE
+print(paste(&quot;RMSE of VALIDATION SET&quot;, round(RMSE(ames_val_selected$price, val_preds$fit), digits = 2)))</code></pre>
+<pre><code>## [1] &quot;RMSE of VALIDATION SET 22322.93&quot;</code></pre>
+<pre class="r"><code># add actual column to the preds dataframe and count how often actual value is inside prediction interval
+val_preds$actual &lt;- ames_val_selected$price
+
+print(paste(&quot;PERCENTAGE OF PREDICTION INTERVALS CONTAINING TRUE PRICE&quot;, 
+            round(nrow(val_preds %&gt;% filter(actual &gt;= lwr, actual &lt;= upr)) / nrow(val_preds),digits = 2)))</code></pre>
+<pre><code>## [1] &quot;PERCENTAGE OF PREDICTION INTERVALS CONTAINING TRUE PRICE 0.97&quot;</code></pre>
+<hr />
+</div>
+</div>
+<div id="part-5-conclusion" class="section level2">
+<h2>Part 5 Conclusion</h2>
+<p>Provide a brief summary of your results, and a brief discussion of what you have learned about the data and your model.</p>
+<hr />
+<p>A simple model containing only three independent variables (<code>area</code>,<code>age</code>, and <code>Neighborhood</code>) performed adequately well in terms of predicting home sales price in both the training and testing data. This simple model achieved an adjusted R-squared value of <code>0.7984</code>, whereas a more complex model that included an additional 10 predictors was able to increase the adjusted R-squared value to <code>0.8896</code>. After exploring the data, it became apparent that some of the numerical variables had skewed distributions, which led me to use the log-transform prior to model construction.</p>
+<p>One of the major issues with the dataset was that some factors, i.e. <code>Neighborhood</code>, <code>House.Style</code>, <code>Exterior.Cond</code>, <code>Foundation</code> and <code>Heating</code> were missing values in the training, testing or validation sets. This caused some problems when it came to predicting price. As an ad hoc solution, I simply filtered the empty levels out of the datasets prior to making predictions. In a real analysis, perhaps a more involved approach would be warranted, such as remerging the training and test sets and dropping factor levels that have minimal or no counts. Limiting the model to a hanfdul of predictors resulted in a model that was not only flexible and resistant to overfitting of the training data, but also to a model that can easily be interpreted by domain experts in the area of real estate. I am confident that the model provides a good starting point for a professional to make the necessary adjustments to the predicted sales price in order to maximize revenue. As stated above, the most important predictors are size of the house, how old the house is, where the house is located, the type of building the house is and the overall quality and condition of the house.</p>
+<p>It’s been fun, thank you!</p>
+<hr />
+</div>
+</div>
+
+    
+    
+
+    
+
+        <h4 class="page-header">Related</h4>
+
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2015-07-23-r-rmarkdown/">Hello R Markdown</a></h4>
+    <h5>July 23, 2015</h5>
+     <kbd class="item-tag">R Markdown</kbd>  <kbd class="item-tag">plot</kbd>  <kbd class="item-tag">regression</kbd> 
+
+</div>
+ 
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dnrichardson-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+
+    </body>
+
+</html>
+

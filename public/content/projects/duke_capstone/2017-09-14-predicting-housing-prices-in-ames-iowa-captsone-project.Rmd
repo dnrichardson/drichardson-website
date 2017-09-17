@@ -1,0 +1,24 @@
+---
+title: Predicting housing prices in Ames, Iowa - Captsone Project
+author: Dale Richardson
+date: '2017-09-14'
+slug: predicting-housing-prices-in-ames-iowa-captsone-project
+categories:
+  - coursera
+  - r
+  - regression
+tags:
+  - regression
+  - mooc
+---
+
+```{r packages, message = FALSE, warning = FALSE}
+suppressPackageStartupMessages(library(statsr))
+suppressPackageStartupMessages(library(tidyverse))
+suppressPackageStartupMessages(library(BAS))
+suppressPackageStartupMessages(library(GGally))
+suppressPackageStartupMessages(library(broom))
+suppressPackageStartupMessages(library(MASS))
+suppressPackageStartupMessages(library(plotly))
+
+```
