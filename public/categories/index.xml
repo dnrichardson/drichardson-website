@@ -20,20 +20,11 @@
     </item>
     
     <item>
-      <title>Development</title>
-      <link>/categories/development/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>Eda</title>
+      <link>/categories/eda/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Golang</title>
-      <link>/categories/golang/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/categories/golang/</guid>
+      <guid>/categories/eda/</guid>
       <description></description>
     </item>
     
@@ -52,6 +43,15 @@
       <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
       
       <guid>/categories/regression/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Viz</title>
+      <link>/categories/viz/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/categories/viz/</guid>
       <description></description>
     </item>
     

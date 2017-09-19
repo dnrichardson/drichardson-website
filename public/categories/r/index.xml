@@ -20,16 +20,5 @@
       <description>Description Part 1 - Exploratory Data Analysis (EDA) Exploratory Data Analysis  Part 2 - Development and assessment of an initial model, following a semi-guided process of analysis Section 2.1 An Initial Model Section 2.2 Model Selection Section 2.3 Initial Model Residuals Section 2.4 Initial Model RMSE Section 2.5 Overfitting  Part 3 Development of a Final Model Section 3.1 Final Model Section 3.2 Transformation Section 3.3 Variable Interaction Section 3.</description>
     </item>
     
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
-    </item>
-    
   </channel>
 </rss>

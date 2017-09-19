@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/post/holidays_happiness/holidays-and-happiness/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</loc>
     <lastmod>2017-09-14T00:00:00+00:00</lastmod>
   </url>
@@ -15,36 +20,6 @@
   <url>
     <loc>/about/</loc>
     <lastmod>2017-06-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/hugo-block-and-light-theme/</loc>
-    <lastmod>2017-01-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/2015-07-23-r-rmarkdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/creating-a-new-theme/</loc>
-    <lastmod>2014-09-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/goisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/hugoisforlovers/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/migrate-from-jekyll/</loc>
-    <lastmod>2014-03-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -66,43 +41,19 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2017-09-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <loc>/tags/eda/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/categories/development/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/go/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/categories/golang/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/hugo/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <loc>/categories/eda/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -114,13 +65,13 @@
   
   <url>
     <loc>/tags/plot/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/post/</loc>
-    <lastmod>2017-01-08T00:00:00+00:00</lastmod>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -138,13 +89,13 @@
   
   <url>
     <loc>/tags/r-markdown/</loc>
-    <lastmod>2015-07-23T21:13:14-05:00</lastmod>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/regression/</loc>
-    <lastmod>2017-09-14T00:00:00+00:00</lastmod>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -161,14 +112,8 @@
   </url>
   
   <url>
-    <loc>/tags/templates/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/themes/</loc>
-    <lastmod>2014-04-02T00:00:00+00:00</lastmod>
+    <loc>/categories/viz/</loc>
+    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Holidays and Happiness - What makes a country happy?</title>
+        <style>
+
+    html body {
+        font-family: Droid Sans, sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: orange;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid%20Sans">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.27" />
+        
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Holidays and Happiness - What makes a country happy?</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/projects/">Projects</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/cv/">CV</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:dalesan@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/dnrichardson/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/yogiwankinobi/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/dalesan/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/temporary-title/">Holidays and Happiness - What makes a country happy?</a></h4>
+    <h5>September 18, 2017</h5>
+     <kbd class="item-tag">R Markdown</kbd>  <kbd class="item-tag">plot</kbd>  <kbd class="item-tag">EDA</kbd>  <kbd class="item-tag">regression</kbd> 
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="description">Description</h2>
+
+<p>Over the past year I have spent a good portion of time in the office studying and preparing for a career transition. Finding a suitable work-life balance has been difficult, especially with the clock ticking on my post-doctoral fellowship running out in December, 2017. Most free moments I have during the day are usually d towards studying something datascience related or doing some sports in an effort to keep mind and body balanced. Add a family and day-job into the mix and you have a recipe for a very tight schedule.</p>
+
+<p>Given how busy I&rsquo;ve been, one would think I would welcome state sanctioned holidays, but to be honest I found myself slightly annoyed! This minor annoyance was probably due to the pressure of my imminently expiring fellowship. That being said, my annoyance got me thinking: does Portugal really have too many holidays? Which countries have the most public holidays? Furthermore, do countries with the most public holidays tend to be happier? More productive?</p>
+
+<p>Well, I thought this to be a perfect occassion to do some exploratory analyses in R.</p>
+
+<h4 id="quick-highlights">Quick highlights</h4>
+
+<ol>
+<li><p>India is the country with the most public holidays at 48. The country with the second most holidays is Pakistan, with 29 - a difference of 19! In contrast, Libya only has 7 public holidays, while the median number of public holidays is 13. In the end, Portugal only has 14 public holidays. Not so bad!</p></li>
+
+<li><p>Five of the 10 happiest nations on Earth are the Nordic countries (Norway, Denmark, Iceland, Finland and Sweden). The remaining five are Switzerland, the Netherlands, Canada, New Zealand and Australia. Portugal is ranked 89th in happiness and the USA (my birthplace) is ranked 14th.</p></li>
+
+<li><p>The number of public holidays is not a significant predictor of a nation&rsquo;s happiness. This is in stark contrast to the importance of wealth, health and generosity as important predictors of a nation&rsquo;s happiness. In short, the wealther, healthier and more generous a nation&rsquo;s people are, the happier they are.</p></li>
+</ol>
+
+<h3 id="get-a-list-of-holiday-counts-by-country-and-happiness-index-by-country">Get a list of holiday counts by country and happiness index by country</h3>
+
+<p>The first thing I needed to acquire was a listing of holidays across the globe. After some googling, I found a table on the <a href="http://timeanddate.com">timeanddate.com</a> website that provided this information. All I had to do was use the <code>rvest</code> package to scrape the table into a dataframe.</p>
+
+<p>Regarding the happiness index, after some googling, I discovered the <a href="https://en.wikipedia.org/wiki/World_Happiness_Report"><strong>World Happiness Report</strong></a>, which is &ldquo;a measure of happiness published by the United Nations Sustainable Development Solutions Network.&rdquo; Also from the wikipedia page:</p>
+
+<p>&ldquo;Data is collected from people in over 150 countries. Each variable measured reveals a populated-weighted average score on a scale running from 0 to 10 that is tracked over time and compared against other countries. These variables currently include: real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+
+<p>The 2017 report features the happiness score averaged over the years 2014-2016. For that timespan, Norway is the overall happiest country in the world, even though oil prices have dropped. Close behind are Denmark, Iceland and Switzerland in a tight pack. All the top ten countries have high scores in the six categories. The ranked follow-on countries in the top ten are: Finland, the Netherlands, Canada, New Zealand, Australia, and Sweden.&rdquo;</p>
+
+<h4 id="scrape-the-holidays-from-timeanddate-com">Scrape the holidays from timeanddate.com</h4>
+
+<p>First load necessary libraries.</p>
+
+<pre><code class="language-r">library(tidyverse)
+library(rvest)
+library(maps)
+library(plotly)
+library(knitr)
+</code></pre>
+
+<pre><code class="language-r"># store the url
+holidays &lt;- read_html(&quot;http://services.timeanddate.com/api/holiday-countries-listing.html&quot;)
+
+# get the table of holidays
+holiday_table &lt;- holidays %&gt;%
+        html_node(&quot;table&quot;) %&gt;%
+        html_table() %&gt;%
+        rename(Total_days = `Total Days`) %&gt;%
+        rename(Public_Holidays = `State &amp; Federal Holidays`) %&gt;%
+        select(Country, Id, Public_Holidays) %&gt;%
+        mutate(Id = toupper(Id))
+
+head(holiday_table)
+</code></pre>
+
+<pre><code>##          Country Id Public_Holidays
+## 1    Afghanistan AF               9
+## 2        Albania AL              14
+## 3        Algeria DZ              12
+## 4 American Samoa AS              12
+## 5        Andorra AD              22
+## 6         Angola AO              12
+</code></pre>
+
+<h4 id="get-iso-3-standard-country-codes-and-join-to-dataframe-of-country-holidays">Get ISO-3 Standard Country Codes and join to dataframe of country holidays</h4>
+
+<p>As plotly takes in ISO-3 country codes to specify country location in plots, I will also scrape the country codes from the FAO.</p>
+
+<pre><code class="language-r">## get ISO-3 country code names for plotting with plotly
+country_codes &lt;- read_html(&quot;http://www.fao.org/countryprofiles/iso3list/en/&quot;)
+
+iso3_table &lt;- country_codes %&gt;% 
+        html_node(&quot;table&quot;) %&gt;% 
+        html_table() #%&gt;%
+        #select(ISO3, ISO2)
+
+# inner join
+holiday_table_joined &lt;- inner_join(holiday_table, iso3_table, by = c(&quot;Id&quot; = &quot;ISO2&quot;) )
+</code></pre>
+
+<h4 id="scrape-happiness-scores-from-the-world-happiness-report-wiki-page">Scrape happiness scores from the World Happiness Report wiki page</h4>
+
+<pre><code class="language-r"># get world happiness / GDP table
+happiness &lt;- read_html(&quot;https://en.wikipedia.org/wiki/World_Happiness_Report&quot;)
+
+happiness_table &lt;- happiness %&gt;% 
+        html_node(xpath = '//*[@id=&quot;mw-content-text&quot;]/div/table[1]') %&gt;%
+        html_table(fill = TRUE) %&gt;%
+        rename(Overall_Rank = `Overall Rank`) %&gt;%
+        rename(GDP_per_Capita = `GDP per capita`) %&gt;%
+        rename(Healthy_Life_Expectancy = `Healthy life expectancy`) %&gt;%
+        rename(Social_Support = `Social support`) %&gt;%
+        rename(Freedom_to_Make_Life_Choices = `Freedom to make life choices`) %&gt;%
+        rename(Generosity = `Generosity`) %&gt;%
+        rename(Trust = `Trust`) %&gt;%
+        select(Country, Score, Overall_Rank, GDP_per_Capita, Healthy_Life_Expectancy, Social_Support, Freedom_to_Make_Life_Choices, Generosity, Trust) %&gt;%
+        mutate(Score = as.numeric(Score),
+               Overall_Rank = as.integer(Overall_Rank),
+               GDP_per_Capita = as.numeric(GDP_per_Capita),
+               Healthy_Life_Expectancy = as.numeric(Healthy_Life_Expectancy),
+               Social_Support = as.numeric(Social_Support),
+               Freedom_to_Make_Life_Choices = as.numeric(Freedom_to_Make_Life_Choices),
+               Generosity = as.numeric(Generosity),
+               Trust = as.numeric(Trust))
+
+# join happiness table with iso3 based on Country name
+tmp &lt;- inner_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;))
+
+glimpse(tmp)
+</code></pre>
+
+<pre><code>## Observations: 135
+## Variables: 16
+## $ Country                      &lt;chr&gt; &quot;Norway&quot;, &quot;Denmark&quot;, &quot;Iceland&quot;, &quot;...
+## $ Score                        &lt;dbl&gt; 7.537, 7.522, 7.504, 7.494, 7.469...
+## $ Overall_Rank                 &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...
+## $ GDP_per_Capita               &lt;dbl&gt; 1.616, 1.482, 1.481, 1.565, 1.444...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.797, 0.793, 0.834, 0.858, 0.809...
+## $ Social_Support               &lt;dbl&gt; 1.534, 1.551, 1.611, 1.517, 1.540...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.635, 0.626, 0.627, 0.620, 0.618...
+## $ Generosity                   &lt;dbl&gt; 0.362, 0.355, 0.476, 0.291, 0.245...
+## $ Trust                        &lt;dbl&gt; 0.316, 0.401, 0.154, 0.367, 0.383...
+## $ `Official name`              &lt;chr&gt; &quot;the Kingdom of Norway&quot;, &quot;the Kin...
+## $ ISO3                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ ISO2                         &lt;chr&gt; &quot;NO&quot;, &quot;DK&quot;, &quot;IS&quot;, &quot;CH&quot;, &quot;FI&quot;, &quot;NL...
+## $ UNI                          &lt;int&gt; 578, 208, 352, 756, 246, 528, 124...
+## $ UNDP                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ FAOSTAT                      &lt;int&gt; 162, 54, 99, 211, 67, 150, 33, 15...
+## $ GAUL                         &lt;int&gt; 186, 69, 114, 237, 84, 177, 46, 1...
+</code></pre>
+
+<p>There&rsquo;s a slight problem with the <code>Country</code> names in the table I scraped from Wikipedia and the table of country names and ISO codes I obtained from the FAO. In order to see the countries that could not be joined on account of inconsistent naming conventions, let&rsquo;s perform an anti-join.</p>
+
+<pre><code class="language-r"># see which countries have problems with names
+anti_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;)) %&gt;% select(Country)
+</code></pre>
+
+<pre><code>##                    Country
+## 1                 Tanzania
+## 2                    Syria
+## 3              Ivory Coast
+## 4         Congo (Kinshasa)
+## 5      Congo (Brazzaville)
+## 6                     Iran
+## 7  Palestinian Territories
+## 8                  Vietnam
+## 9                Macedonia
+## 10               Venezuela
+## 11                  Kosovo
+## 12                   World
+## 13               Hong Kong
+## 14            North Cyprus
+## 15                 Bolivia
+## 16             South Korea
+## 17                 Moldova
+## 18                  Russia
+## 19          Europe[Note 1]
+## 20                  Taiwan
+## 21          Czech Republic
+## 22           United States
+</code></pre>
+
+<p>Alright. I see what I will have to do. Now that I know which country names are problematic in the <code>happiness_table</code>, I will manually replace them with the ISO country short names.</p>
+
+<pre><code class="language-r"># get a vector of bad country names
+replaceme &lt;- pull(anti_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;)) 
+                  %&gt;% select(Country))
+
+# drop irrelevant values or disputed territories, e.g. &quot;World&quot;
+replaceme &lt;- replaceme[-c(7, 11, 12, 13, 14, 19, 20)]
+
+good_names &lt;- c(&quot;United States of America&quot;,
+                &quot;Czechia&quot;,
+                &quot;Russian Federation&quot;,
+                &quot;Republic of Moldova&quot;,
+                &quot;Republic of Korea&quot;,
+                &quot;Bolivia (Plurinational State of)&quot;,
+                &quot;Venezuela (Bolivarian Republic of)&quot;,
+                &quot;The former Yugoslav Republic of Macedonia&quot;,
+                &quot;Viet nam&quot;,
+                &quot;Iran (Islamic Republic of)&quot;,
+                &quot;Congo&quot;,
+                &quot;Democratic Republic of the Congo&quot;,
+                &quot;Côte d'Ivoire&quot;,
+                &quot;Syrian Arab Republic&quot;,
+                &quot;United Republic of Tanzania&quot;
+)
+
+# get row number indices for &quot;bad&quot; country names in the happiness_table
+bad_country_index &lt;- as.numeric(rownames(happiness_table[happiness_table$Country %in% replaceme,]))
+
+# replace with &quot;good&quot; name
+happiness_table$Country &lt;- replace(happiness_table$Country, bad_country_index, good_names)
+
+# try joining again the happiness table with iso3 based on Country name
+happy_countries &lt;- inner_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;))
+
+glimpse(happy_countries)
+</code></pre>
+
+<pre><code>## Observations: 149
+## Variables: 16
+## $ Country                      &lt;chr&gt; &quot;Norway&quot;, &quot;Denmark&quot;, &quot;Iceland&quot;, &quot;...
+## $ Score                        &lt;dbl&gt; 7.537, 7.522, 7.504, 7.494, 7.469...
+## $ Overall_Rank                 &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...
+## $ GDP_per_Capita               &lt;dbl&gt; 1.616, 1.482, 1.481, 1.565, 1.444...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.797, 0.793, 0.834, 0.858, 0.809...
+## $ Social_Support               &lt;dbl&gt; 1.534, 1.551, 1.611, 1.517, 1.540...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.635, 0.626, 0.627, 0.620, 0.618...
+## $ Generosity                   &lt;dbl&gt; 0.362, 0.355, 0.476, 0.291, 0.245...
+## $ Trust                        &lt;dbl&gt; 0.316, 0.401, 0.154, 0.367, 0.383...
+## $ `Official name`              &lt;chr&gt; &quot;the Kingdom of Norway&quot;, &quot;the Kin...
+## $ ISO3                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ ISO2                         &lt;chr&gt; &quot;NO&quot;, &quot;DK&quot;, &quot;IS&quot;, &quot;CH&quot;, &quot;FI&quot;, &quot;NL...
+## $ UNI                          &lt;int&gt; 578, 208, 352, 756, 246, 528, 124...
+## $ UNDP                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ FAOSTAT                      &lt;int&gt; 162, 54, 99, 211, 67, 150, 33, 15...
+## $ GAUL                         &lt;int&gt; 186, 69, 114, 237, 84, 177, 46, 1...
+</code></pre>
+
+<p>Ahh, good. Everything worked. We now have a dataframe of 149 countries along with their happiness scores and ISO-3 country codes.</p>
+
+<h4 id="join-the-holidays-table-to-the-happy-countries-dataframe">Join the holidays table to the happy_countries dataframe</h4>
+
+<pre><code class="language-r"># join tables based on country
+#combined &lt;- left_join(happy_countries, holiday_table, by = &quot;Country&quot;)
+combined &lt;- inner_join(holiday_table_joined, happy_countries,  by = &quot;ISO3&quot;) %&gt;% 
+        select(Country.y, Overall_Rank, Score, Public_Holidays, ISO3, GDP_per_Capita:Trust) %&gt;%
+        rename(Country = Country.y)
+
+glimpse(combined)
+</code></pre>
+
+<pre><code>## Observations: 147
+## Variables: 11
+## $ Country                      &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Albania&quot;, &quot;Algeri...
+## $ Overall_Rank                 &lt;int&gt; 141, 109, 53, 140, 24, 121, 9, 13...
+## $ Score                        &lt;dbl&gt; 3.794, 4.644, 5.872, 3.795, 6.599...
+## $ Public_Holidays              &lt;int&gt; 9, 14, 12, 12, 17, 17, 20, 14, 24...
+## $ ISO3                         &lt;chr&gt; &quot;AFG&quot;, &quot;ALB&quot;, &quot;DZA&quot;, &quot;AGO&quot;, &quot;ARG&quot;...
+## $ GDP_per_Capita               &lt;dbl&gt; 0.401, 0.996, 1.092, 0.858, 1.185...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.181, 0.731, 0.618, 0.050, 0.695...
+## $ Social_Support               &lt;dbl&gt; 0.582, 0.804, 1.146, 1.104, 1.440...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.106, 0.381, 0.233, 0.000, 0.495...
+## $ Generosity                   &lt;dbl&gt; 0.312, 0.201, 0.069, 0.098, 0.109...
+## $ Trust                        &lt;dbl&gt; 0.061, 0.040, 0.146, 0.070, 0.060...
+</code></pre>
+
+<p>Now I have a table that includes data on holidays and happiness. Let&rsquo;s make a few plots!</p>
+
+<h3 id="india-has-the-most-public-holidays-at-48-whereas-libya-has-the-fewest-at-7">India has the most public holidays at 48 whereas Libya has the fewest at 7</h3>
+
+<p>I think it would be cool to start with a plot of holiday counts by country. I will use the <code>holiday_table</code> dataframe as it contains data on 192 countries, whereas the combined dataframe only has data for 147 countries. Let&rsquo;s try using plotly for an interactive experience.</p>
+
+<pre><code class="language-r"># code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l &lt;- list(color = toRGB(&quot;grey&quot;), width = 0.5)
+
+# specify map projection/options
+g &lt;- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+p &lt;- plot_geo(holiday_table_joined) %&gt;%
+  add_trace(
+    z = ~Public_Holidays, color = ~Public_Holidays, colors = 'Blues',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %&gt;%
+  colorbar(title = 'Number of public holidays') %&gt;%
+  layout(
+    title = 'World Public Holidays&lt;br&gt;Source:&lt;a href=&quot;http://services.timeanddate.com/api/holiday-countries-listing.html&quot;&gt;TimeandDate.com&lt;/a&gt;',
+    geo = g
+  )
+
+#display
+p
+</code></pre>
+
+<p><!--html_preserve--><div id="33fd305dabbf" style="width:960px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="33fd305dabbf">{&ldquo;x&rdquo;:{&ldquo;visdat&rdquo;:{&ldquo;33fd56e08d50&rdquo;:[&ldquo;function () &ldquo;,&ldquo;plotlyVisDat&rdquo;]},&ldquo;cur_data&rdquo;:&ldquo;33fd56e08d50&rdquo;,&ldquo;attrs&rdquo;:{&ldquo;33fd56e08d50&rdquo;:{&ldquo;alpha&rdquo;:1,&ldquo;sizes&rdquo;:[10,100],&ldquo;z&rdquo;:{},&ldquo;color&rdquo;:{},&ldquo;colors&rdquo;:&ldquo;Blues&rdquo;,&ldquo;text&rdquo;:{},&ldquo;locations&rdquo;:{},&ldquo;marker&rdquo;:{&ldquo;line&rdquo;:{&ldquo;color&rdquo;:&ldquo;rgba(190,190,190,1)&rdquo;,&ldquo;width&rdquo;:0.5}}}},&ldquo;layout&rdquo;:{&ldquo;margin&rdquo;:{&ldquo;b&rdquo;:40,&ldquo;l&rdquo;:60,&ldquo;t&rdquo;:25,&ldquo;r&rdquo;:10},&ldquo;mapType&rdquo;:&ldquo;geo&rdquo;,&ldquo;scene&rdquo;:{&ldquo;zaxis&rdquo;:{&ldquo;title&rdquo;:&ldquo;Public_Holidays&rdquo;}},&ldquo;geo&rdquo;:{&ldquo;domain&rdquo;:{&ldquo;x&rdquo;:[0,1],&ldquo;y&rdquo;:[0,1]},&ldquo;showframe&rdquo;:false,&ldquo;showcoastlines&rdquo;:false,&ldquo;projection&rdquo;:{&ldquo;type&rdquo;:&ldquo;Mercator&rdquo;}},&ldquo;hovermode&rdquo;:&ldquo;closest&rdquo;,&ldquo;showlegend&rdquo;:false,&ldquo;legend&rdquo;:{&ldquo;y&rdquo;:0.5,&ldquo;yanchor&rdquo;:&ldquo;top&rdquo;},&ldquo;title&rdquo;:&ldquo;World Public Holidays<br>Source:<a href=\"http://services.timeanddate.com/api/holiday-countries-listing.html\">TimeandDate.com&lt;\/a&gt;&ldquo;},&ldquo;source&rdquo;:&ldquo;A&rdquo;,&ldquo;config&rdquo;:{&ldquo;modeBarButtonsToAdd&rdquo;:[{&ldquo;name&rdquo;:&ldquo;Collaborate&rdquo;,&ldquo;icon&rdquo;:{&ldquo;width&rdquo;:1000,&ldquo;ascent&rdquo;:500,&ldquo;descent&rdquo;:-50,&ldquo;path&rdquo;:&ldquo;M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z&rdquo;},&ldquo;click&rdquo;:&ldquo;function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == &lsquo;?viewer_pane=1&rsquo;) {\n          alert(&lsquo;To learn about plotly for collaboration, visit:\n <a href="https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');n">https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');n</a>        } else {\n          window.open(&lsquo;<a href="https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html'">https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html'</a>, &lsquo;_blank&rsquo;);\n        }\n      }&ldquo;}],&ldquo;cloud&rdquo;:false},&ldquo;data&rdquo;:[{&ldquo;colorbar&rdquo;:{&ldquo;title&rdquo;:&ldquo;Number of public holidays&rdquo;,&ldquo;ticklen&rdquo;:2,&ldquo;len&rdquo;:0.5,&ldquo;y&rdquo;:1,&ldquo;lenmode&rdquo;:&ldquo;fraction&rdquo;,&ldquo;yanchor&rdquo;:&ldquo;top&rdquo;},&ldquo;colorscale&rdquo;:[[&ldquo;0&rdquo;,&ldquo;rgba(247,251,255,1)&rdquo;],[&ldquo;0.0476190476190476&rdquo;,&ldquo;rgba(237,245,252,1)&rdquo;],[&ldquo;0.0714285714285714&rdquo;,&ldquo;rgba(233,242,250,1)&rdquo;],[&ldquo;0.0952380952380952&rdquo;,&ldquo;rgba(228,239,249,1)&rdquo;],[&ldquo;0.119047619047619&rdquo;,&ldquo;rgba(223,236,247,1)&rdquo;],[&ldquo;0.142857142857143&rdquo;,&ldquo;rgba(219,233,246,1)&rdquo;],[&ldquo;0.166666666666667&rdquo;,&ldquo;rgba(214,230,244,1)&rdquo;],[&ldquo;0.19047619047619&rdquo;,&ldquo;rgba(209,227,243,1)&rdquo;],[&ldquo;0.214285714285714&rdquo;,&ldquo;rgba(205,224,241,1)&rdquo;],[&ldquo;0.238095238095238&rdquo;,&ldquo;rgba(200,221,240,1)&rdquo;],[&ldquo;0.261904761904762&rdquo;,&ldquo;rgba(194,217,238,1)&rdquo;],[&ldquo;0.285714285714286&rdquo;,&ldquo;rgba(187,214,235,1)&rdquo;],[&ldquo;0.359126984126984&rdquo;,&ldquo;rgba(163,204,227,1)&rdquo;],[&ldquo;0.452380952380952&rdquo;,&ldquo;rgba(128,185,218,1)&rdquo;],[&ldquo;1&rdquo;,&ldquo;rgba(8,48,107,1)&rdquo;]],&ldquo;showscale&rdquo;:true,&ldquo;z&rdquo;:[9,14,12,22,12,12,17,17,20,14,24,16,13,9,12,14,12,22,12,21,9,16,13,14,10,12,10,17,11,23,13,10,16,27,18,9,10,11,9,9,14,14,10,15,14,11,7,13,12,14,11,20,14,11,16,12,13,17,10,13,11,13,13,17,17,15,14,15,11,10,9,17,11,11,12,16,48,16,26,16,10,13,12,11,20,16,21,12,11,13,15,13,13,16,11,12,7,13,12,26,11,11,25,13,10,16,11,8,14,12,6,17,14,8,13,15,10,13,8,28,9,11,9,12,13,15,22,13,29,9,18,11,14,13,23,13,14,10,15,16,11,13,13,14,10,19,8,9,13,12,11,9,14,15,15,8,9,14,18,12,18,25,8,15,13,14,18,12,13,16,25,12,14,11,18,11,13,14,11,15,16,14,11,12,10,11,16,23,15,14,13,12],&ldquo;text&rdquo;:[&ldquo;Afghanistan&rdquo;,&ldquo;Albania&rdquo;,&ldquo;Algeria&rdquo;,&ldquo;Andorra&rdquo;,&ldquo;Angola&rdquo;,&ldquo;Antigua and Barbuda&rdquo;,&ldquo;Argentina&rdquo;,&ldquo;Armenia&rdquo;,&ldquo;Australia&rdquo;,&ldquo;Austria&rdquo;,&ldquo;Azerbaijan&rdquo;,&ldquo;Bahrain&rdquo;,&ldquo;Barbados&rdquo;,&ldquo;Belarus&rdquo;,&ldquo;Belgium&rdquo;,&ldquo;Belize&rdquo;,&ldquo;Benin&rdquo;,&ldquo;Bhutan&rdquo;,&ldquo;Bolivia&rdquo;,&ldquo;Bosnia and Herzegovina&rdquo;,&ldquo;Botswana&rdquo;,&ldquo;Brazil&rdquo;,&ldquo;Brunei&rdquo;,&ldquo;Bulgaria&rdquo;,&ldquo;Burkina Faso&rdquo;,&ldquo;Burundi&rdquo;,&ldquo;Cabo Verde&rdquo;,&ldquo;Cambodia&rdquo;,&ldquo;Cameroon&rdquo;,&ldquo;Canada&rdquo;,&ldquo;Central African Republic&rdquo;,&ldquo;Chad&rdquo;,&ldquo;Chile&rdquo;,&ldquo;China&rdquo;,&ldquo;Colombia&rdquo;,&ldquo;Comoros&rdquo;,&ldquo;Congo&rdquo;,&ldquo;Congo Democratic Republic&rdquo;,&ldquo;Cook Islands&rdquo;,&ldquo;Costa Rica&rdquo;,&ldquo;Cote d&rsquo;Ivoire&rdquo;,&ldquo;Croatia&rdquo;,&ldquo;Cuba&rdquo;,&ldquo;Cyprus&rdquo;,&ldquo;Czech Republic&rdquo;,&ldquo;Denmark&rdquo;,&ldquo;Djibouti&rdquo;,&ldquo;Dominica&rdquo;,&ldquo;Dominican Republic&rdquo;,&ldquo;East Timor&rdquo;,&ldquo;Ecuador&rdquo;,&ldquo;Egypt&rdquo;,&ldquo;El Salvador&rdquo;,&ldquo;Equatorial Guinea&rdquo;,&ldquo;Eritrea&rdquo;,&ldquo;Estonia&rdquo;,&ldquo;Ethiopia&rdquo;,&ldquo;Faroe Islands&rdquo;,&ldquo;Fiji&rdquo;,&ldquo;Finland&rdquo;,&ldquo;France&rdquo;,&ldquo;Gabon&rdquo;,&ldquo;Gambia&rdquo;,&ldquo;Georgia&rdquo;,&ldquo;Germany&rdquo;,&ldquo;Ghana&rdquo;,&ldquo;Greece&rdquo;,&ldquo;Grenada&rdquo;,&ldquo;Guatemala&rdquo;,&ldquo;Guinea&rdquo;,&ldquo;Guinea-Bissau&rdquo;,&ldquo;Guyana&rdquo;,&ldquo;Haiti&rdquo;,&ldquo;Honduras&rdquo;,&ldquo;Hungary&rdquo;,&ldquo;Iceland&rdquo;,&ldquo;India&rdquo;,&ldquo;Indonesia&rdquo;,&ldquo;Iran&rdquo;,&ldquo;Iraq&rdquo;,&ldquo;Ireland&rdquo;,&ldquo;Israel&rdquo;,&ldquo;Italy&rdquo;,&ldquo;Jamaica&rdquo;,&ldquo;Japan&rdquo;,&ldquo;Jordan&rdquo;,&ldquo;Kazakhstan&rdquo;,&ldquo;Kenya&rdquo;,&ldquo;Kiribati&rdquo;,&ldquo;Kuwait&rdquo;,&ldquo;Kyrgyzstan&rdquo;,&ldquo;Laos&rdquo;,&ldquo;Latvia&rdquo;,&ldquo;Lebanon&rdquo;,&ldquo;Lesotho&rdquo;,&ldquo;Liberia&rdquo;,&ldquo;Libya&rdquo;,&ldquo;Lithuania&rdquo;,&ldquo;Luxembourg&rdquo;,&ldquo;Macedonia, Republic of&rdquo;,&ldquo;Madagascar&rdquo;,&ldquo;Malawi&rdquo;,&ldquo;Malaysia&rdquo;,&ldquo;Maldives&rdquo;,&ldquo;Mali&rdquo;,&ldquo;Malta&rdquo;,&ldquo;Marshall Islands&rdquo;,&ldquo;Mauritania&rdquo;,&ldquo;Mauritius&rdquo;,&ldquo;Mexico&rdquo;,&ldquo;Micronesia&rdquo;,&ldquo;Moldova&rdquo;,&ldquo;Monaco&rdquo;,&ldquo;Mongolia&rdquo;,&ldquo;Montenegro&rdquo;,&ldquo;Morocco&rdquo;,&ldquo;Mozambique&rdquo;,&ldquo;Myanmar&rdquo;,&ldquo;Nauru&rdquo;,&ldquo;Nepal&rdquo;,&ldquo;Netherlands&rdquo;,&ldquo;New Zealand&rdquo;,&ldquo;Nicaragua&rdquo;,&ldquo;Niger&rdquo;,&ldquo;Nigeria&rdquo;,&ldquo;North Korea&rdquo;,&ldquo;Norway&rdquo;,&ldquo;Oman&rdquo;,&ldquo;Pakistan&rdquo;,&ldquo;Palau&rdquo;,&ldquo;Panama&rdquo;,&ldquo;Papua New Guinea&rdquo;,&ldquo;Paraguay&rdquo;,&ldquo;Peru&rdquo;,&ldquo;Philippines&rdquo;,&ldquo;Poland&rdquo;,&ldquo;Portugal&rdquo;,&ldquo;Qatar&rdquo;,&ldquo;Romania&rdquo;,&ldquo;Russia&rdquo;,&ldquo;Rwanda&rdquo;,&ldquo;Saint Kitts and Nevis&rdquo;,&ldquo;Saint Lucia&rdquo;,&ldquo;Saint Vincent and the Grenadines&rdquo;,&ldquo;Samoa&rdquo;,&ldquo;San Marino&rdquo;,&ldquo;Sao Tome and Principe&rdquo;,&ldquo;Saudi Arabia&rdquo;,&ldquo;Senegal&rdquo;,&ldquo;Serbia&rdquo;,&ldquo;Seychelles&rdquo;,&ldquo;Sierra Leone&rdquo;,&ldquo;Singapore&rdquo;,&ldquo;Slovakia&rdquo;,&ldquo;Slovenia&rdquo;,&ldquo;Solomon Islands&rdquo;,&ldquo;Somalia&rdquo;,&ldquo;South Africa&rdquo;,&ldquo;South Korea&rdquo;,&ldquo;South Sudan&rdquo;,&ldquo;Spain&rdquo;,&ldquo;Sri Lanka&rdquo;,&ldquo;Sudan&rdquo;,&ldquo;Suriname&rdquo;,&ldquo;Swaziland&rdquo;,&ldquo;Sweden&rdquo;,&ldquo;Switzerland&rdquo;,&ldquo;Syria&rdquo;,&ldquo;Tajikistan&rdquo;,&ldquo;Tanzania&rdquo;,&ldquo;Thailand&rdquo;,&ldquo;The Bahamas&rdquo;,&ldquo;Togo&rdquo;,&ldquo;Tonga&rdquo;,&ldquo;Trinidad and Tobago&rdquo;,&ldquo;Tunisia&rdquo;,&ldquo;Turkey&rdquo;,&ldquo;Turkmenistan&rdquo;,&ldquo;Tuvalu&rdquo;,&ldquo;Uganda&rdquo;,&ldquo;Ukraine&rdquo;,&ldquo;United Arab Emirates&rdquo;,&ldquo;United Kingdom&rdquo;,&ldquo;United States&rdquo;,&ldquo;Uruguay&rdquo;,&ldquo;Uzbekistan&rdquo;,&ldquo;Vanuatu&rdquo;,&ldquo;Venezuela&rdquo;,&ldquo;Vietnam&rdquo;,&ldquo;Yemen&rdquo;,&ldquo;Zambia&rdquo;,&ldquo;Zimbabwe&rdquo;],&ldquo;locations&rdquo;:[&ldquo;AFG&rdquo;,&ldquo;ALB&rdquo;,&ldquo;DZA&rdquo;,&ldquo;AND&rdquo;,&ldquo;AGO&rdquo;,&ldquo;ATG&rdquo;,&ldquo;ARG&rdquo;,&ldquo;ARM&rdquo;,&ldquo;AUS&rdquo;,&ldquo;AUT&rdquo;,&ldquo;AZE&rdquo;,&ldquo;BHR&rdquo;,&ldquo;BRB&rdquo;,&ldquo;BLR&rdquo;,&ldquo;BEL&rdquo;,&ldquo;BLZ&rdquo;,&ldquo;BEN&rdquo;,&ldquo;BTN&rdquo;,&ldquo;BOL&rdquo;,&ldquo;BIH&rdquo;,&ldquo;BWA&rdquo;,&ldquo;BRA&rdquo;,&ldquo;BRN&rdquo;,&ldquo;BGR&rdquo;,&ldquo;BFA&rdquo;,&ldquo;BDI&rdquo;,&ldquo;CPV&rdquo;,&ldquo;KHM&rdquo;,&ldquo;CMR&rdquo;,&ldquo;CAN&rdquo;,&ldquo;CAF&rdquo;,&ldquo;TCD&rdquo;,&ldquo;CHL&rdquo;,&ldquo;CHN&rdquo;,&ldquo;COL&rdquo;,&ldquo;COM&rdquo;,&ldquo;COG&rdquo;,&ldquo;COD&rdquo;,&ldquo;COK&rdquo;,&ldquo;CRI&rdquo;,&ldquo;CIV&rdquo;,&ldquo;HRV&rdquo;,&ldquo;CUB&rdquo;,&ldquo;CYP&rdquo;,&ldquo;CZE&rdquo;,&ldquo;DNK&rdquo;,&ldquo;DJI&rdquo;,&ldquo;DMA&rdquo;,&ldquo;DOM&rdquo;,&ldquo;TLS&rdquo;,&ldquo;ECU&rdquo;,&ldquo;EGY&rdquo;,&ldquo;SLV&rdquo;,&ldquo;GNQ&rdquo;,&ldquo;ERI&rdquo;,&ldquo;EST&rdquo;,&ldquo;ETH&rdquo;,&ldquo;FRO&rdquo;,&ldquo;FJI&rdquo;,&ldquo;FIN&rdquo;,&ldquo;FRA&rdquo;,&ldquo;GAB&rdquo;,&ldquo;GMB&rdquo;,&ldquo;GEO&rdquo;,&ldquo;DEU&rdquo;,&ldquo;GHA&rdquo;,&ldquo;GRC&rdquo;,&ldquo;GRD&rdquo;,&ldquo;GTM&rdquo;,&ldquo;GIN&rdquo;,&ldquo;GNB&rdquo;,&ldquo;GUY&rdquo;,&ldquo;HTI&rdquo;,&ldquo;HND&rdquo;,&ldquo;HUN&rdquo;,&ldquo;ISL&rdquo;,&ldquo;IND&rdquo;,&ldquo;IDN&rdquo;,&ldquo;IRN&rdquo;,&ldquo;IRQ&rdquo;,&ldquo;IRL&rdquo;,&ldquo;ISR&rdquo;,&ldquo;ITA&rdquo;,&ldquo;JAM&rdquo;,&ldquo;JPN&rdquo;,&ldquo;JOR&rdquo;,&ldquo;KAZ&rdquo;,&ldquo;KEN&rdquo;,&ldquo;KIR&rdquo;,&ldquo;KWT&rdquo;,&ldquo;KGZ&rdquo;,&ldquo;LAO&rdquo;,&ldquo;LVA&rdquo;,&ldquo;LBN&rdquo;,&ldquo;LSO&rdquo;,&ldquo;LBR&rdquo;,&ldquo;LBY&rdquo;,&ldquo;LTU&rdquo;,&ldquo;LUX&rdquo;,&ldquo;MKD&rdquo;,&ldquo;MDG&rdquo;,&ldquo;MWI&rdquo;,&ldquo;MYS&rdquo;,&ldquo;MDV&rdquo;,&ldquo;MLI&rdquo;,&ldquo;MLT&rdquo;,&ldquo;MHL&rdquo;,&ldquo;MRT&rdquo;,&ldquo;MUS&rdquo;,&ldquo;MEX&rdquo;,&ldquo;FSM&rdquo;,&ldquo;MDA&rdquo;,&ldquo;MCO&rdquo;,&ldquo;MNG&rdquo;,&ldquo;MNE&rdquo;,&ldquo;MAR&rdquo;,&ldquo;MOZ&rdquo;,&ldquo;MMR&rdquo;,&ldquo;NRU&rdquo;,&ldquo;NPL&rdquo;,&ldquo;NLD&rdquo;,&ldquo;NZL&rdquo;,&ldquo;NIC&rdquo;,&ldquo;NER&rdquo;,&ldquo;NGA&rdquo;,&ldquo;PRK&rdquo;,&ldquo;NOR&rdquo;,&ldquo;OMN&rdquo;,&ldquo;PAK&rdquo;,&ldquo;PLW&rdquo;,&ldquo;PAN&rdquo;,&ldquo;PNG&rdquo;,&ldquo;PRY&rdquo;,&ldquo;PER&rdquo;,&ldquo;PHL&rdquo;,&ldquo;POL&rdquo;,&ldquo;PRT&rdquo;,&ldquo;QAT&rdquo;,&ldquo;ROU&rdquo;,&ldquo;RUS&rdquo;,&ldquo;RWA&rdquo;,&ldquo;KNA&rdquo;,&ldquo;LCA&rdquo;,&ldquo;VCT&rdquo;,&ldquo;WSM&rdquo;,&ldquo;SMR&rdquo;,&ldquo;STP&rdquo;,&ldquo;SAU&rdquo;,&ldquo;SEN&rdquo;,&ldquo;SRB&rdquo;,&ldquo;SYC&rdquo;,&ldquo;SLE&rdquo;,&ldquo;SGP&rdquo;,&ldquo;SVK&rdquo;,&ldquo;SVN&rdquo;,&ldquo;SLB&rdquo;,&ldquo;SOM&rdquo;,&ldquo;ZAF&rdquo;,&ldquo;KOR&rdquo;,&ldquo;SSD&rdquo;,&ldquo;ESP&rdquo;,&ldquo;LKA&rdquo;,&ldquo;SDN&rdquo;,&ldquo;SUR&rdquo;,&ldquo;SWZ&rdquo;,&ldquo;SWE&rdquo;,&ldquo;CHE&rdquo;,&ldquo;SYR&rdquo;,&ldquo;TJK&rdquo;,&ldquo;TZA&rdquo;,&ldquo;THA&rdquo;,&ldquo;BHS&rdquo;,&ldquo;TGO&rdquo;,&ldquo;TON&rdquo;,&ldquo;TTO&rdquo;,&ldquo;TUN&rdquo;,&ldquo;TUR&rdquo;,&ldquo;TKM&rdquo;,&ldquo;TUV&rdquo;,&ldquo;UGA&rdquo;,&ldquo;UKR&rdquo;,&ldquo;ARE&rdquo;,&ldquo;GBR&rdquo;,&ldquo;USA&rdquo;,&ldquo;URY&rdquo;,&ldquo;UZB&rdquo;,&ldquo;VUT&rdquo;,&ldquo;VEN&rdquo;,&ldquo;VNM&rdquo;,&ldquo;YEM&rdquo;,&ldquo;ZMB&rdquo;,&ldquo;ZWE&rdquo;],&ldquo;marker&rdquo;:{&ldquo;line&rdquo;:{&ldquo;color&rdquo;:&ldquo;rgba(190,190,190,1)&rdquo;,&ldquo;width&rdquo;:0.5}},&ldquo;type&rdquo;:&ldquo;choropleth&rdquo;,&ldquo;geo&rdquo;:&ldquo;geo&rdquo;,&ldquo;frame&rdquo;:null}],&ldquo;highlight&rdquo;:{&ldquo;on&rdquo;:&ldquo;plotly_click&rdquo;,&ldquo;persistent&rdquo;:false,&ldquo;dynamic&rdquo;:false,&ldquo;selectize&rdquo;:false,&ldquo;opacityDim&rdquo;:0.2,&ldquo;selected&rdquo;:{&ldquo;opacity&rdquo;:1}},&ldquo;base_url&rdquo;:&ldquo;<a href="https://plot.ly&quot;},&quot;evals&quot;:[&quot;config.modeBarButtonsToAdd.0.click&quot;],&quot;jsHooks&quot;:{&quot;render&quot;:[{&quot;code&quot;:&quot;function(el">https://plot.ly&quot;},&quot;evals&quot;:[&quot;config.modeBarButtonsToAdd.0.click&quot;],&quot;jsHooks&quot;:{&quot;render&quot;:[{&quot;code&quot;:&quot;function(el</a>, x) { var ctConfig = crosstalk.var(&lsquo;plotlyCrosstalkOpts&rsquo;).set({\&ldquo;on\&rdquo;:\&ldquo;plotly_click\&ldquo;,\&ldquo;persistent\&rdquo;:false,\&ldquo;dynamic\&rdquo;:false,\&ldquo;selectize\&rdquo;:false,\&ldquo;opacityDim\&rdquo;:0.2,\&ldquo;selected\&rdquo;:{\&ldquo;opacity\&rdquo;:1}}); }&ldquo;,&ldquo;data&rdquo;:null},{&ldquo;code&rdquo;:&ldquo;function(el, x) { var ctConfig = crosstalk.var(&lsquo;plotlyCrosstalkOpts&rsquo;).set({\&ldquo;on\&rdquo;:\&ldquo;plotly_click\&ldquo;,\&ldquo;persistent\&rdquo;:false,\&ldquo;dynamic\&rdquo;:false,\&ldquo;selectize\&rdquo;:false,\&ldquo;opacityDim\&rdquo;:0.2,\&ldquo;selected\&rdquo;:{\&ldquo;opacity\&rdquo;:1}}); }&ldquo;,&ldquo;data&rdquo;:null}]}}</script><!--/html_preserve--></p>
+
+<p>Cool! Let&rsquo;s take a look at the top 10 countries with the most holidays.</p>
+
+<pre><code class="language-r">kable(top_n(combined, 10, Public_Holidays) %&gt;% 
+        arrange(desc(Public_Holidays)) %&gt;%
+        select(Country, Public_Holidays),
+      caption = &quot;Top 10 Countries with the Most Public Holidays&quot;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Country</th>
+<th align="right">Public_Holidays</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">India</td>
+<td align="right">48</td>
+</tr>
+
+<tr>
+<td align="left">Pakistan</td>
+<td align="right">29</td>
+</tr>
+
+<tr>
+<td align="left">Nepal</td>
+<td align="right">28</td>
+</tr>
+
+<tr>
+<td align="left">China</td>
+<td align="right">27</td>
+</tr>
+
+<tr>
+<td align="left">Iran (Islamic Republic of)</td>
+<td align="right">26</td>
+</tr>
+
+<tr>
+<td align="left">The former Yugoslav Republic of Macedonia</td>
+<td align="right">26</td>
+</tr>
+
+<tr>
+<td align="left">Malaysia</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Sri Lanka</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Thailand</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Azerbaijan</td>
+<td align="right">24</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-r"># take a summary as well
+summary(combined$Public_Holidays, na.rm = TRUE)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    7.00   11.00   13.00   14.53   16.00   48.00
+</code></pre>
+
+<p>Impressive! India has 48 public holidays! It looks like if you&rsquo;re looking for a place with some serious downtime, you may want to move to India. The median number of public holidays is 13, with a minimum of 7. Let&rsquo;s see who this country is.</p>
+
+<pre><code class="language-r"># get country with lowest number of public holidays
+combined[which.min(combined$Public_Holidays), &quot;Country&quot;]
+</code></pre>
+
+<pre><code>## [1] &quot;Libya&quot;
+</code></pre>
+
+<p>Yikes! Perhaps public holidays are the least of Libya&rsquo;s concerns at the moment, given they are embroiled in conflict and have <a href="http://www.aljazeera.com/indepth/features/2017/04/happening-libya-today-170418083223563.html">multiple governments vying for power and control over the country</a>.</p>
+
+<h3 id="nordic-countries-switzerland-the-netherlands-canada-australia-and-new-zealand-are-the-happiest-countries-on-earth">Nordic countries, Switzerland, the Netherlands, Canada, Australia and New Zealand are the happiest countries on Earth</h3>
+
+<p>Let&rsquo;s now turn our attention to see which countries have the highest happiness scores. Once again we&rsquo;ll use plotly to build an interactive world map and then check out the top ten happiest countries.</p>
+
+<pre><code class="language-r"># code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l &lt;- list(color = toRGB(&quot;grey&quot;), width = 0.5)
+
+# specify map projection/options
+g &lt;- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+q &lt;- plot_geo(happy_countries) %&gt;%
+  add_trace(
+    z = ~Score, color = ~Score, colors = 'Oranges',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %&gt;%
+  colorbar(title = 'World Happiness Score') %&gt;%
+  layout(
+    title = 'World Happiness Score&lt;br&gt;Source:&lt;a href=&quot;https://en.wikipedia.org/wiki/World_Happiness_Report&quot;&gt;World Happiness Report&lt;/a&gt;',
+    geo = g
+  )
+
+# display
+q
+</code></pre>
+
+<p><!--html_preserve--><div id="33fd34aa9942" style="width:960px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="33fd34aa9942">{&ldquo;x&rdquo;:{&ldquo;visdat&rdquo;:{&ldquo;33fd1b4e58d7&rdquo;:[&ldquo;function () &ldquo;,&ldquo;plotlyVisDat&rdquo;]},&ldquo;cur_data&rdquo;:&ldquo;33fd1b4e58d7&rdquo;,&ldquo;attrs&rdquo;:{&ldquo;33fd1b4e58d7&rdquo;:{&ldquo;alpha&rdquo;:1,&ldquo;sizes&rdquo;:[10,100],&ldquo;z&rdquo;:{},&ldquo;color&rdquo;:{},&ldquo;colors&rdquo;:&ldquo;Oranges&rdquo;,&ldquo;text&rdquo;:{},&ldquo;locations&rdquo;:{},&ldquo;marker&rdquo;:{&ldquo;line&rdquo;:{&ldquo;color&rdquo;:&ldquo;rgba(190,190,190,1)&rdquo;,&ldquo;width&rdquo;:0.5}}}},&ldquo;layout&rdquo;:{&ldquo;margin&rdquo;:{&ldquo;b&rdquo;:40,&ldquo;l&rdquo;:60,&ldquo;t&rdquo;:25,&ldquo;r&rdquo;:10},&ldquo;mapType&rdquo;:&ldquo;geo&rdquo;,&ldquo;scene&rdquo;:{&ldquo;zaxis&rdquo;:{&ldquo;title&rdquo;:&ldquo;Score&rdquo;}},&ldquo;geo&rdquo;:{&ldquo;domain&rdquo;:{&ldquo;x&rdquo;:[0,1],&ldquo;y&rdquo;:[0,1]},&ldquo;showframe&rdquo;:false,&ldquo;showcoastlines&rdquo;:false,&ldquo;projection&rdquo;:{&ldquo;type&rdquo;:&ldquo;Mercator&rdquo;}},&ldquo;hovermode&rdquo;:&ldquo;closest&rdquo;,&ldquo;showlegend&rdquo;:false,&ldquo;legend&rdquo;:{&ldquo;y&rdquo;:0.5,&ldquo;yanchor&rdquo;:&ldquo;top&rdquo;},&ldquo;title&rdquo;:&ldquo;World Happiness Score<br>Source:<a href=\"https://en.wikipedia.org/wiki/World_Happiness_Report\">World Happiness Report&lt;\/a&gt;&ldquo;},&ldquo;source&rdquo;:&ldquo;A&rdquo;,&ldquo;config&rdquo;:{&ldquo;modeBarButtonsToAdd&rdquo;:[{&ldquo;name&rdquo;:&ldquo;Collaborate&rdquo;,&ldquo;icon&rdquo;:{&ldquo;width&rdquo;:1000,&ldquo;ascent&rdquo;:500,&ldquo;descent&rdquo;:-50,&ldquo;path&rdquo;:&ldquo;M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z&rdquo;},&ldquo;click&rdquo;:&ldquo;function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == &lsquo;?viewer_pane=1&rsquo;) {\n          alert(&lsquo;To learn about plotly for collaboration, visit:\n <a href="https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');n">https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');n</a>        } else {\n          window.open(&lsquo;<a href="https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html'">https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html'</a>, &lsquo;_blank&rsquo;);\n        }\n      }&ldquo;}],&ldquo;cloud&rdquo;:false},&ldquo;data&rdquo;:[{&ldquo;colorbar&rdquo;:{&ldquo;title&rdquo;:&ldquo;World Happiness Score&rdquo;,&ldquo;ticklen&rdquo;:2,&ldquo;len&rdquo;:0.5,&ldquo;y&rdquo;:1,&ldquo;lenmode&rdquo;:&ldquo;fraction&rdquo;,&ldquo;yanchor&rdquo;:&ldquo;top&rdquo;},&ldquo;colorscale&rdquo;:[[&ldquo;0&rdquo;,&ldquo;rgba(255,245,235,1)&rdquo;],[&ldquo;0.168937517203413&rdquo;,&ldquo;rgba(254,222,190,1)&rdquo;],[&ldquo;0.206509771538673&rdquo;,&ldquo;rgba(254,216,177,1)&rdquo;],[&ldquo;0.260115606936416&rdquo;,&ldquo;rgba(253,205,158,1)&rdquo;],[&ldquo;0.297206165703276&rdquo;,&ldquo;rgba(254,195,141,1)&rdquo;],[&ldquo;0.329720616570328&rdquo;,&ldquo;rgba(254,186,127,1)&rdquo;],[&ldquo;0.365813377374071&rdquo;,&ldquo;rgba(253,177,111,1)&rdquo;],[&ldquo;0.384702725020644&rdquo;,&ldquo;rgba(253,171,103,1)&rdquo;],[&ldquo;0.416529039361409&rdquo;,&ldquo;rgba(254,163,92,1)&rdquo;],[&ldquo;0.472749793559042&rdquo;,&ldquo;rgba(253,148,71,1)&rdquo;],[&ldquo;0.513212221304707&rdquo;,&ldquo;rgba(252,137,56,1)&rdquo;],[&ldquo;0.524428846683182&rdquo;,&ldquo;rgba(251,134,53,1)&rdquo;],[&ldquo;0.532617671345995&rdquo;,&ldquo;rgba(250,132,50,1)&rdquo;],[&ldquo;0.567196531791907&rdquo;,&ldquo;rgba(247,122,40,1)&rdquo;],[&ldquo;0.605009633911368&rdquo;,&ldquo;rgba(243,111,27,1)&rdquo;],[&ldquo;0.646366639141206&rdquo;,&ldquo;rgba(237,100,16,1)&rdquo;],[&ldquo;0.66494632535095&rdquo;,&ldquo;rgba(233,95,13,1)&rdquo;],[&ldquo;0.682287365813377&rdquo;,&ldquo;rgba(230,90,10,1)&rdquo;],[&ldquo;0.704376548307184&rdquo;,&ldquo;rgba(226,84,7,1)&rdquo;],[&ldquo;0.770850536746491&rdquo;,&ldquo;rgba(208,69,1,1)&rdquo;],[&ldquo;0.801197357555739&rdquo;,&ldquo;rgba(196,65,2,1)&rdquo;],[&ldquo;0.823699421965318&rdquo;,&ldquo;rgba(187,61,2,1)&rdquo;],[&ldquo;0.889485273878338&rdquo;,&ldquo;rgba(161,52,3,1)&rdquo;],[&ldquo;0.954307734654556&rdquo;,&ldquo;rgba(141,44,4,1)&rdquo;],[&ldquo;1&rdquo;,&ldquo;rgba(127,39,4,1)&rdquo;]],&ldquo;showscale&rdquo;:true,&ldquo;z&rdquo;:[7.537,7.522,7.504,7.494,7.469,7.377,7.316,7.314,7.284,7.284,7.213,7.079,7.006,6.993,6.977,6.951,6.891,6.863,6.714,6.652,6.648,6.635,6.609,6.599,6.578,6.572,6.527,6.454,6.454,6.452,6.442,6.424,6.403,6.375,6.357,6.344,6.168,6.105,6.098,6.087,6.084,6.071,6.008,6.003,5.973,5.971,5.964,5.963,5.956,5.92,5.902,5.872,5.85,5.838,5.838,5.825,5.823,5.822,5.819,5.758,5.715,5.629,5.621,5.611,5.569,5.525,5.5,5.493,5.43,5.395,5.336,5.324,5.311,5.293,5.273,5.269,5.262,5.25,5.237,5.235,5.234,5.23,5.227,5.225,5.195,5.182,5.181,5.175,5.151,5.074,5.041,5.011,5.004,4.962,4.955,4.829,4.805,4.735,4.714,4.709,4.695,4.692,4.644,4.608,4.574,4.553,4.55,4.545,4.535,4.514,4.497,4.465,4.46,4.44,4.376,4.315,4.292,4.291,4.286,4.28,4.19,4.18,4.168,4.139,4.12,4.096,4.081,4.032,4.028,3.97,3.936,3.875,3.808,3.795,3.794,3.766,3.657,3.644,3.603,3.593,3.591,3.533,3.507,3.495,3.471,3.462,3.349,2.905,2.693],&ldquo;text&rdquo;:[&ldquo;Norway&rdquo;,&ldquo;Denmark&rdquo;,&ldquo;Iceland&rdquo;,&ldquo;Switzerland&rdquo;,&ldquo;Finland&rdquo;,&ldquo;Netherlands&rdquo;,&ldquo;Canada&rdquo;,&ldquo;New Zealand&rdquo;,&ldquo;Australia&rdquo;,&ldquo;Sweden&rdquo;,&ldquo;Israel&rdquo;,&ldquo;Costa Rica&rdquo;,&ldquo;Austria&rdquo;,&ldquo;United States of America&rdquo;,&ldquo;Ireland&rdquo;,&ldquo;Germany&rdquo;,&ldquo;Belgium&rdquo;,&ldquo;Luxembourg&rdquo;,&ldquo;United Kingdom&rdquo;,&ldquo;Chile&rdquo;,&ldquo;United Arab Emirates&rdquo;,&ldquo;Brazil&rdquo;,&ldquo;Czechia&rdquo;,&ldquo;Argentina&rdquo;,&ldquo;Mexico&rdquo;,&ldquo;Singapore&rdquo;,&ldquo;Malta&rdquo;,&ldquo;Uruguay&rdquo;,&ldquo;Guatemala&rdquo;,&ldquo;Panama&rdquo;,&ldquo;France&rdquo;,&ldquo;Thailand&rdquo;,&ldquo;Spain&rdquo;,&ldquo;Qatar&rdquo;,&ldquo;Colombia&rdquo;,&ldquo;Saudi Arabia&rdquo;,&ldquo;Trinidad and Tobago&rdquo;,&ldquo;Kuwait&rdquo;,&ldquo;Slovakia&rdquo;,&ldquo;Bahrain&rdquo;,&ldquo;Malaysia&rdquo;,&ldquo;Nicaragua&rdquo;,&ldquo;Ecuador&rdquo;,&ldquo;El Salvador&rdquo;,&ldquo;Poland&rdquo;,&ldquo;Uzbekistan&rdquo;,&ldquo;Italy&rdquo;,&ldquo;Russian Federation&rdquo;,&ldquo;Belize&rdquo;,&ldquo;Japan&rdquo;,&ldquo;Lithuania&rdquo;,&ldquo;Algeria&rdquo;,&ldquo;Latvia&rdquo;,&ldquo;Republic of Moldova&rdquo;,&ldquo;Republic of Korea&rdquo;,&ldquo;Romania&rdquo;,&ldquo;Bolivia (Plurinational State of)&rdquo;,&ldquo;Turkmenistan&rdquo;,&ldquo;Kazakhstan&rdquo;,&ldquo;Slovenia&rdquo;,&ldquo;Peru&rdquo;,&ldquo;Mauritius&rdquo;,&ldquo;Cyprus&rdquo;,&ldquo;Estonia&rdquo;,&ldquo;Belarus&rdquo;,&ldquo;Libya&rdquo;,&ldquo;Turkey&rdquo;,&ldquo;Paraguay&rdquo;,&ldquo;Philippines&rdquo;,&ldquo;Serbia&rdquo;,&ldquo;Jordan&rdquo;,&ldquo;Hungary&rdquo;,&ldquo;Jamaica&rdquo;,&ldquo;Croatia&rdquo;,&ldquo;China&rdquo;,&ldquo;Pakistan&rdquo;,&ldquo;Indonesia&rdquo;,&ldquo;Venezuela (Bolivarian Republic of)&rdquo;,&ldquo;Montenegro&rdquo;,&ldquo;Morocco&rdquo;,&ldquo;Azerbaijan&rdquo;,&ldquo;Dominican Republic&rdquo;,&ldquo;Greece&rdquo;,&ldquo;Lebanon&rdquo;,&ldquo;Portugal&rdquo;,&ldquo;Bosnia and Herzegovina&rdquo;,&ldquo;Honduras&rdquo;,&ldquo;The former Yugoslav Republic of Macedonia&rdquo;,&ldquo;Somalia&rdquo;,&ldquo;Nigeria&rdquo;,&ldquo;Tajikistan&rdquo;,&ldquo;Bhutan&rdquo;,&ldquo;Kyrgyzstan&rdquo;,&ldquo;Nepal&rdquo;,&ldquo;Mongolia&rdquo;,&ldquo;South Africa&rdquo;,&ldquo;Tunisia&rdquo;,&ldquo;Egypt&rdquo;,&ldquo;Bulgaria&rdquo;,&ldquo;Sierra Leone&rdquo;,&ldquo;Cameroon&rdquo;,&ldquo;Iran (Islamic Republic of)&rdquo;,&ldquo;Albania&rdquo;,&ldquo;Bangladesh&rdquo;,&ldquo;Namibia&rdquo;,&ldquo;Kenya&rdquo;,&ldquo;Mozambique&rdquo;,&ldquo;Myanmar&rdquo;,&ldquo;Senegal&rdquo;,&ldquo;Zambia&rdquo;,&ldquo;Iraq&rdquo;,&ldquo;Gabon&rdquo;,&ldquo;Ethiopia&rdquo;,&ldquo;Sri Lanka&rdquo;,&ldquo;Armenia&rdquo;,&ldquo;India&rdquo;,&ldquo;Mauritania&rdquo;,&ldquo;Congo&rdquo;,&ldquo;Georgia&rdquo;,&ldquo;Democratic Republic of the Congo&rdquo;,&ldquo;Mali&rdquo;,&ldquo;Côte d&rsquo;Ivoire&rdquo;,&ldquo;Cambodia&rdquo;,&ldquo;Sudan&rdquo;,&ldquo;Ghana&rdquo;,&ldquo;Ukraine&rdquo;,&ldquo;Uganda&rdquo;,&ldquo;Burkina Faso&rdquo;,&ldquo;Niger&rdquo;,&ldquo;Malawi&rdquo;,&ldquo;Chad&rdquo;,&ldquo;Zimbabwe&rdquo;,&ldquo;Lesotho&rdquo;,&ldquo;Angola&rdquo;,&ldquo;Afghanistan&rdquo;,&ldquo;Botswana&rdquo;,&ldquo;Benin&rdquo;,&ldquo;Madagascar&rdquo;,&ldquo;Haiti&rdquo;,&ldquo;Yemen&rdquo;,&ldquo;South Sudan&rdquo;,&ldquo;Liberia&rdquo;,&ldquo;Guinea&rdquo;,&ldquo;Togo&rdquo;,&ldquo;Rwanda&rdquo;,&ldquo;Syrian Arab Republic&rdquo;,&ldquo;United Republic of Tanzania&rdquo;,&ldquo;Burundi&rdquo;,&ldquo;Central African Republic&rdquo;],&ldquo;locations&rdquo;:[&ldquo;NOR&rdquo;,&ldquo;DNK&rdquo;,&ldquo;ISL&rdquo;,&ldquo;CHE&rdquo;,&ldquo;FIN&rdquo;,&ldquo;NLD&rdquo;,&ldquo;CAN&rdquo;,&ldquo;NZL&rdquo;,&ldquo;AUS&rdquo;,&ldquo;SWE&rdquo;,&ldquo;ISR&rdquo;,&ldquo;CRI&rdquo;,&ldquo;AUT&rdquo;,&ldquo;USA&rdquo;,&ldquo;IRL&rdquo;,&ldquo;DEU&rdquo;,&ldquo;BEL&rdquo;,&ldquo;LUX&rdquo;,&ldquo;GBR&rdquo;,&ldquo;CHL&rdquo;,&ldquo;ARE&rdquo;,&ldquo;BRA&rdquo;,&ldquo;CZE&rdquo;,&ldquo;ARG&rdquo;,&ldquo;MEX&rdquo;,&ldquo;SGP&rdquo;,&ldquo;MLT&rdquo;,&ldquo;URY&rdquo;,&ldquo;GTM&rdquo;,&ldquo;PAN&rdquo;,&ldquo;FRA&rdquo;,&ldquo;THA&rdquo;,&ldquo;ESP&rdquo;,&ldquo;QAT&rdquo;,&ldquo;COL&rdquo;,&ldquo;SAU&rdquo;,&ldquo;TTO&rdquo;,&ldquo;KWT&rdquo;,&ldquo;SVK&rdquo;,&ldquo;BHR&rdquo;,&ldquo;MYS&rdquo;,&ldquo;NIC&rdquo;,&ldquo;ECU&rdquo;,&ldquo;SLV&rdquo;,&ldquo;POL&rdquo;,&ldquo;UZB&rdquo;,&ldquo;ITA&rdquo;,&ldquo;RUS&rdquo;,&ldquo;BLZ&rdquo;,&ldquo;JPN&rdquo;,&ldquo;LTU&rdquo;,&ldquo;DZA&rdquo;,&ldquo;LVA&rdquo;,&ldquo;MDA&rdquo;,&ldquo;KOR&rdquo;,&ldquo;ROU&rdquo;,&ldquo;BOL&rdquo;,&ldquo;TKM&rdquo;,&ldquo;KAZ&rdquo;,&ldquo;SVN&rdquo;,&ldquo;PER&rdquo;,&ldquo;MUS&rdquo;,&ldquo;CYP&rdquo;,&ldquo;EST&rdquo;,&ldquo;BLR&rdquo;,&ldquo;LBY&rdquo;,&ldquo;TUR&rdquo;,&ldquo;PRY&rdquo;,&ldquo;PHL&rdquo;,&ldquo;SRB&rdquo;,&ldquo;JOR&rdquo;,&ldquo;HUN&rdquo;,&ldquo;JAM&rdquo;,&ldquo;HRV&rdquo;,&ldquo;CHN&rdquo;,&ldquo;PAK&rdquo;,&ldquo;IDN&rdquo;,&ldquo;VEN&rdquo;,&ldquo;MNE&rdquo;,&ldquo;MAR&rdquo;,&ldquo;AZE&rdquo;,&ldquo;DOM&rdquo;,&ldquo;GRC&rdquo;,&ldquo;LBN&rdquo;,&ldquo;PRT&rdquo;,&ldquo;BIH&rdquo;,&ldquo;HND&rdquo;,&ldquo;MKD&rdquo;,&ldquo;SOM&rdquo;,&ldquo;NGA&rdquo;,&ldquo;TJK&rdquo;,&ldquo;BTN&rdquo;,&ldquo;KGZ&rdquo;,&ldquo;NPL&rdquo;,&ldquo;MNG&rdquo;,&ldquo;ZAF&rdquo;,&ldquo;TUN&rdquo;,&ldquo;EGY&rdquo;,&ldquo;BGR&rdquo;,&ldquo;SLE&rdquo;,&ldquo;CMR&rdquo;,&ldquo;IRN&rdquo;,&ldquo;ALB&rdquo;,&ldquo;BGD&rdquo;,&ldquo;NAM&rdquo;,&ldquo;KEN&rdquo;,&ldquo;MOZ&rdquo;,&ldquo;MMR&rdquo;,&ldquo;SEN&rdquo;,&ldquo;ZMB&rdquo;,&ldquo;IRQ&rdquo;,&ldquo;GAB&rdquo;,&ldquo;ETH&rdquo;,&ldquo;LKA&rdquo;,&ldquo;ARM&rdquo;,&ldquo;IND&rdquo;,&ldquo;MRT&rdquo;,&ldquo;COG&rdquo;,&ldquo;GEO&rdquo;,&ldquo;COD&rdquo;,&ldquo;MLI&rdquo;,&ldquo;CIV&rdquo;,&ldquo;KHM&rdquo;,&ldquo;SDN&rdquo;,&ldquo;GHA&rdquo;,&ldquo;UKR&rdquo;,&ldquo;UGA&rdquo;,&ldquo;BFA&rdquo;,&ldquo;NER&rdquo;,&ldquo;MWI&rdquo;,&ldquo;TCD&rdquo;,&ldquo;ZWE&rdquo;,&ldquo;LSO&rdquo;,&ldquo;AGO&rdquo;,&ldquo;AFG&rdquo;,&ldquo;BWA&rdquo;,&ldquo;BEN&rdquo;,&ldquo;MDG&rdquo;,&ldquo;HTI&rdquo;,&ldquo;YEM&rdquo;,&ldquo;SSD&rdquo;,&ldquo;LBR&rdquo;,&ldquo;GIN&rdquo;,&ldquo;TGO&rdquo;,&ldquo;RWA&rdquo;,&ldquo;SYR&rdquo;,&ldquo;TZA&rdquo;,&ldquo;BDI&rdquo;,&ldquo;CAF&rdquo;],&ldquo;marker&rdquo;:{&ldquo;line&rdquo;:{&ldquo;color&rdquo;:&ldquo;rgba(190,190,190,1)&rdquo;,&ldquo;width&rdquo;:0.5}},&ldquo;type&rdquo;:&ldquo;choropleth&rdquo;,&ldquo;geo&rdquo;:&ldquo;geo&rdquo;,&ldquo;frame&rdquo;:null}],&ldquo;highlight&rdquo;:{&ldquo;on&rdquo;:&ldquo;plotly_click&rdquo;,&ldquo;persistent&rdquo;:false,&ldquo;dynamic&rdquo;:false,&ldquo;selectize&rdquo;:false,&ldquo;opacityDim&rdquo;:0.2,&ldquo;selected&rdquo;:{&ldquo;opacity&rdquo;:1}},&ldquo;base_url&rdquo;:&ldquo;<a href="https://plot.ly&quot;},&quot;evals&quot;:[&quot;config.modeBarButtonsToAdd.0.click&quot;],&quot;jsHooks&quot;:{&quot;render&quot;:[{&quot;code&quot;:&quot;function(el">https://plot.ly&quot;},&quot;evals&quot;:[&quot;config.modeBarButtonsToAdd.0.click&quot;],&quot;jsHooks&quot;:{&quot;render&quot;:[{&quot;code&quot;:&quot;function(el</a>, x) { var ctConfig = crosstalk.var(&lsquo;plotlyCrosstalkOpts&rsquo;).set({\&ldquo;on\&rdquo;:\&ldquo;plotly_click\&ldquo;,\&ldquo;persistent\&rdquo;:false,\&ldquo;dynamic\&rdquo;:false,\&ldquo;selectize\&rdquo;:false,\&ldquo;opacityDim\&rdquo;:0.2,\&ldquo;selected\&rdquo;:{\&ldquo;opacity\&rdquo;:1}}); }&ldquo;,&ldquo;data&rdquo;:null},{&ldquo;code&rdquo;:&ldquo;function(el, x) { var ctConfig = crosstalk.var(&lsquo;plotlyCrosstalkOpts&rsquo;).set({\&ldquo;on\&rdquo;:\&ldquo;plotly_click\&ldquo;,\&ldquo;persistent\&rdquo;:false,\&ldquo;dynamic\&rdquo;:false,\&ldquo;selectize\&rdquo;:false,\&ldquo;opacityDim\&rdquo;:0.2,\&ldquo;selected\&rdquo;:{\&ldquo;opacity\&rdquo;:1}}); }&ldquo;,&ldquo;data&rdquo;:null}]}}</script><!--/html_preserve--></p>
+
+<p>Again, let&rsquo;s see the top ten.</p>
+
+<pre><code class="language-r">kable(top_n(combined, 10, Score) %&gt;% 
+        arrange(desc(Score)) %&gt;%
+        select(Country, Score),
+      caption = &quot;Top 10 Happiest Countries&quot;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Country</th>
+<th align="right">Score</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Norway</td>
+<td align="right">7.537</td>
+</tr>
+
+<tr>
+<td align="left">Denmark</td>
+<td align="right">7.522</td>
+</tr>
+
+<tr>
+<td align="left">Iceland</td>
+<td align="right">7.504</td>
+</tr>
+
+<tr>
+<td align="left">Switzerland</td>
+<td align="right">7.494</td>
+</tr>
+
+<tr>
+<td align="left">Finland</td>
+<td align="right">7.469</td>
+</tr>
+
+<tr>
+<td align="left">Netherlands</td>
+<td align="right">7.377</td>
+</tr>
+
+<tr>
+<td align="left">Canada</td>
+<td align="right">7.316</td>
+</tr>
+
+<tr>
+<td align="left">New Zealand</td>
+<td align="right">7.314</td>
+</tr>
+
+<tr>
+<td align="left">Australia</td>
+<td align="right">7.284</td>
+</tr>
+
+<tr>
+<td align="left">Sweden</td>
+<td align="right">7.284</td>
+</tr>
+</tbody>
+</table>
+
+<p>That&rsquo;s truly amazing. Five of the 10 happiest countries are from the Nordic countries.</p>
+
+<h3 id="do-more-public-holidays-have-any-influence-on-happiness">Do more public holidays have any influence on happiness?</h3>
+
+<p>Since India is a bit of an outlier with 48 public holidays we&rsquo;ll exclude it from our linear model as it is likely a high leverage point.</p>
+
+<pre><code class="language-r"># generate a linear model to predict score without india
+m2 &lt;- lm(Score ~ GDP_per_Capita + Healthy_Life_Expectancy + Freedom_to_Make_Life_Choices + Generosity + Trust + Public_Holidays, data = combined[-116,])
+
+summary(m2)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = Score ~ GDP_per_Capita + Healthy_Life_Expectancy + 
+##     Freedom_to_Make_Life_Choices + Generosity + Trust + Public_Holidays, 
+##     data = combined[-116, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.65388 -0.31762  0.01534  0.34746  1.17080 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                   2.555170   0.182014  14.038  &lt; 2e-16 ***
+## GDP_per_Capita                1.181882   0.207673   5.691 7.19e-08 ***
+## Healthy_Life_Expectancy       1.614443   0.358162   4.508 1.38e-05 ***
+## Freedom_to_Make_Life_Choices  2.072612   0.364597   5.685 7.42e-08 ***
+## Generosity                    0.456940   0.361630   1.264    0.209    
+## Trust                         0.544459   0.551782   0.987    0.325    
+## Public_Holidays              -0.017701   0.008915  -1.986    0.049 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.5334 on 139 degrees of freedom
+## Multiple R-squared:  0.7947,	Adjusted R-squared:  0.7858 
+## F-statistic: 89.68 on 6 and 139 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p>Interestingly, the number of public holidays as well as <code>Trust</code> have no significant bearing on predicting the happiness of a country.  Without a doubt, the strongest predictors are <code>GDP_per_Capita</code>, <code>Healthy_Life_Expectancy</code>, <code>Freedom_to_Make_Life_Choices</code> and a little bit of <code>Generosity</code>.</p>
+
+<p>What nation wouldn&rsquo;t be happy if their people are relatively wealthy, healthy, free and generous?</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dnrichardson-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+
+    </body>
+
+</html>
+

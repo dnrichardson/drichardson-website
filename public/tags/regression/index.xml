@@ -6,10 +6,19 @@
     <description>Recent content in Regression on Dale Richardson</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 14 Sep 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Sep 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/regression/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Holidays and Happiness - What makes a country happy?</title>
+      <link>/post/holidays_happiness/holidays-and-happiness/</link>
+      <pubDate>Mon, 18 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/post/holidays_happiness/holidays-and-happiness/</guid>
+      <description>Description Over the past year I have spent a good portion of time in the office studying and preparing for a career transition. Finding a suitable work-life balance has been difficult, especially with the clock ticking on my post-doctoral fellowship running out in December, 2017. Most free moments I have during the day are usually d towards studying something datascience related or doing some sports in an effort to keep mind and body balanced.</description>
+    </item>
     
     <item>
       <title>Predicting housing prices in Ames, Iowa - Captsone Project for Coursera Statistics with R Specialization</title>
@@ -18,17 +27,6 @@
       
       <guid>/projects/duke_capstone/predicting-housing-prices-in-ames-iowa-captsone-project/</guid>
       <description>Description Part 1 - Exploratory Data Analysis (EDA) Exploratory Data Analysis  Part 2 - Development and assessment of an initial model, following a semi-guided process of analysis Section 2.1 An Initial Model Section 2.2 Model Selection Section 2.3 Initial Model Residuals Section 2.4 Initial Model RMSE Section 2.5 Overfitting  Part 3 Development of a Final Model Section 3.1 Final Model Section 3.2 Transformation Section 3.3 Variable Interaction Section 3.</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>/post/2015-07-23-r-rmarkdown/</link>
-      <pubDate>Thu, 23 Jul 2015 21:13:14 -0500</pubDate>
-      
-      <guid>/post/2015-07-23-r-rmarkdown/</guid>
-      <description>R Markdown This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
   </channel>

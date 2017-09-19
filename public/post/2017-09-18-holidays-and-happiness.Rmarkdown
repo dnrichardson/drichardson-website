@@ -1,0 +1,297 @@
+---
+title: Holidays and Happiness - What makes a country happy?
+author: Dale Richardson
+date: '2017-09-18'
+slug: temporary-title
+categories:
+  - viz
+  - eda
+tags:
+  - R Markdown
+  - plot
+  - EDA
+  - regression
+output:
+  blogdown::html_page:
+    toc: true
+---
+
+## Description
+
+Over the past year I have spent a good portion of time in the office studying and preparing for a career transition. Finding a suitable work-life balance has been difficult, especially with the clock ticking on my post-doctoral fellowship running out in December, 2017. Most free moments I have during the day are usually d towards studying something datascience related or doing some sports in an effort to keep mind and body balanced. Add a family and day-job into the mix and you have a recipe for a very tight schedule. 
+
+Given how busy I've been, one would think I would welcome state sanctioned holidays, but to be honest I found myself slightly annoyed! This minor annoyance was probably due to the pressure of my imminently expiring fellowship. That being said, my annoyance got me thinking: does Portugal really have too many holidays? Which countries have the most public holidays? Furthermore, do countries with the most public holidays tend to be happier? More productive?
+
+Well, I thought this to be a perfect occassion to do some exploratory analyses in R.
+
+#### Quick highlights
+1. India is the country with the most public holidays at 48. The country with the second most holidays is Pakistan, with 29 - a difference of 19! In contrast, Libya only has 7 public holidays, while the median number of public holidays is 13. In the end, Portugal only has 14 public holidays. Not so bad!
+
+2. Five of the 10 happiest nations on Earth are the Nordic countries (Norway, Denmark, Iceland, Finland and Sweden). The remaining five are Switzerland, the Netherlands, Canada, New Zealand and Australia. Portugal is ranked 89th in happiness and the USA (my birthplace) is ranked 14th. 
+
+3. The number of public holidays is not a significant predictor of a nation's happiness. This is in stark contrast to the importance of wealth, health and generosity as important predictors of a nation's happiness. In short, the wealther, healthier and more generous a nation's people are, the happier they are.
+
+### Get a list of holiday counts by country and happiness index by country
+The first thing I needed to acquire was a listing of holidays across the globe. After some googling, I found a table on the [timeanddate.com](http://timeanddate.com) website that provided this information. All I had to do was use the `rvest` package to scrape the table into a dataframe. 
+
+Regarding the happiness index, after some googling, I discovered the [**World Happiness Report**](https://en.wikipedia.org/wiki/World_Happiness_Report), which is "a measure of happiness published by the United Nations Sustainable Development Solutions Network." Also from the wikipedia page:
+
+"Data is collected from people in over 150 countries. Each variable measured reveals a populated-weighted average score on a scale running from 0 to 10 that is tracked over time and compared against other countries. These variables currently include: real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.
+
+The 2017 report features the happiness score averaged over the years 2014-2016. For that timespan, Norway is the overall happiest country in the world, even though oil prices have dropped. Close behind are Denmark, Iceland and Switzerland in a tight pack. All the top ten countries have high scores in the six categories. The ranked follow-on countries in the top ten are: Finland, the Netherlands, Canada, New Zealand, Australia, and Sweden."
+
+
+#### Scrape the holidays from timeanddate.com
+
+First load necessary libraries. 
+
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+library(rvest)
+library(maps)
+library(plotly)
+library(knitr)
+```
+
+```{r}
+# store the url
+holidays <- read_html("http://services.timeanddate.com/api/holiday-countries-listing.html")
+
+# get the table of holidays
+holiday_table <- holidays %>%
+        html_node("table") %>%
+        html_table() %>%
+        rename(Total_days = `Total Days`) %>%
+        rename(Public_Holidays = `State & Federal Holidays`) %>%
+        select(Country, Id, Public_Holidays) %>%
+        mutate(Id = toupper(Id))
+
+head(holiday_table)
+
+``` 
+
+#### Get ISO-3 Standard Country Codes and join to dataframe of country holidays
+
+As plotly takes in ISO-3 country codes to specify country location in plots, I will also scrape the country codes from the FAO. 
+
+```{r}
+## get ISO-3 country code names for plotting with plotly
+country_codes <- read_html("http://www.fao.org/countryprofiles/iso3list/en/")
+
+iso3_table <- country_codes %>% 
+        html_node("table") %>% 
+        html_table() #%>%
+        #select(ISO3, ISO2)
+
+# inner join
+holiday_table_joined <- inner_join(holiday_table, iso3_table, by = c("Id" = "ISO2") )
+```
+
+#### Scrape happiness scores from the World Happiness Report wiki page
+```{r, warning = FALSE}
+# get world happiness / GDP table
+happiness <- read_html("https://en.wikipedia.org/wiki/World_Happiness_Report")
+
+happiness_table <- happiness %>% 
+        html_node(xpath = '//*[@id="mw-content-text"]/div/table[1]') %>%
+        html_table(fill = TRUE) %>%
+        rename(Overall_Rank = `Overall Rank`) %>%
+        rename(GDP_per_Capita = `GDP per capita`) %>%
+        rename(Healthy_Life_Expectancy = `Healthy life expectancy`) %>%
+        rename(Social_Support = `Social support`) %>%
+        rename(Freedom_to_Make_Life_Choices = `Freedom to make life choices`) %>%
+        rename(Generosity = `Generosity`) %>%
+        rename(Trust = `Trust`) %>%
+        select(Country, Score, Overall_Rank, GDP_per_Capita, Healthy_Life_Expectancy, Social_Support, Freedom_to_Make_Life_Choices, Generosity, Trust) %>%
+        mutate(Score = as.numeric(Score),
+               Overall_Rank = as.integer(Overall_Rank),
+               GDP_per_Capita = as.numeric(GDP_per_Capita),
+               Healthy_Life_Expectancy = as.numeric(Healthy_Life_Expectancy),
+               Social_Support = as.numeric(Social_Support),
+               Freedom_to_Make_Life_Choices = as.numeric(Freedom_to_Make_Life_Choices),
+               Generosity = as.numeric(Generosity),
+               Trust = as.numeric(Trust))
+
+# join happiness table with iso3 based on Country name
+tmp <- inner_join(happiness_table, iso3_table, by = c("Country" = "Short name"))
+
+glimpse(tmp)
+```
+
+There's a slight problem with the `Country` names in the table I scraped from Wikipedia and the table of country names and ISO codes I obtained from the FAO. In order to see the countries that could not be joined on account of inconsistent naming conventions, let's perform an anti-join.
+
+```{r}
+# see which countries have problems with names
+anti_join(happiness_table, iso3_table, by = c("Country" = "Short name")) %>% select(Country)
+```
+
+Alright. I see what I will have to do. Now that I know which country names are problematic in the `happiness_table`, I will manually replace them with the ISO country short names. 
+
+```{r}
+# get a vector of bad country names
+replaceme <- pull(anti_join(happiness_table, iso3_table, by = c("Country" = "Short name")) 
+                  %>% select(Country))
+
+# drop irrelevant values or disputed territories, e.g. "World"
+replaceme <- replaceme[-c(7, 11, 12, 13, 14, 19, 20)]
+
+good_names <- c("United States of America",
+                "Czechia",
+                "Russian Federation",
+                "Republic of Moldova",
+                "Republic of Korea",
+                "Bolivia (Plurinational State of)",
+                "Venezuela (Bolivarian Republic of)",
+                "The former Yugoslav Republic of Macedonia",
+                "Viet nam",
+                "Iran (Islamic Republic of)",
+                "Congo",
+                "Democratic Republic of the Congo",
+                "Côte d'Ivoire",
+                "Syrian Arab Republic",
+                "United Republic of Tanzania"
+)
+
+# get row number indices for "bad" country names in the happiness_table
+bad_country_index <- as.numeric(rownames(happiness_table[happiness_table$Country %in% replaceme,]))
+
+# replace with "good" name
+happiness_table$Country <- replace(happiness_table$Country, bad_country_index, good_names)
+
+# try joining again the happiness table with iso3 based on Country name
+happy_countries <- inner_join(happiness_table, iso3_table, by = c("Country" = "Short name"))
+
+glimpse(happy_countries)
+```
+
+Ahh, good. Everything worked. We now have a dataframe of 149 countries along with their happiness scores and ISO-3 country codes. 
+
+#### Join the holidays table to the happy_countries dataframe
+```{r}
+# join tables based on country
+#combined <- left_join(happy_countries, holiday_table, by = "Country")
+combined <- inner_join(holiday_table_joined, happy_countries,  by = "ISO3") %>% 
+        select(Country.y, Overall_Rank, Score, Public_Holidays, ISO3, GDP_per_Capita:Trust) %>%
+        rename(Country = Country.y)
+
+glimpse(combined)
+
+```
+
+Now I have a table that includes data on holidays and happiness. Let's make a few plots!
+
+### India has the most public holidays at 48 whereas Libya has the fewest at 7
+
+I think it would be cool to start with a plot of holiday counts by country. I will use the `holiday_table` dataframe as it contains data on 192 countries, whereas the combined dataframe only has data for 147 countries. Let's try using plotly for an interactive experience.
+
+```{r, fig.width = 10, warning = FALSE}
+# code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l <- list(color = toRGB("grey"), width = 0.5)
+
+# specify map projection/options
+g <- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+p <- plot_geo(holiday_table_joined) %>%
+  add_trace(
+    z = ~Public_Holidays, color = ~Public_Holidays, colors = 'Blues',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %>%
+  colorbar(title = 'Number of public holidays') %>%
+  layout(
+    title = 'World Public Holidays<br>Source:<a href="http://services.timeanddate.com/api/holiday-countries-listing.html">TimeandDate.com</a>',
+    geo = g
+  )
+
+#display
+p
+```
+
+Cool! Let's take a look at the top 10 countries with the most holidays.
+
+```{r}
+kable(top_n(combined, 10, Public_Holidays) %>% 
+        arrange(desc(Public_Holidays)) %>%
+        select(Country, Public_Holidays),
+      caption = "Top 10 Countries with the Most Public Holidays")
+
+# take a summary as well
+summary(combined$Public_Holidays, na.rm = TRUE)
+```
+
+Impressive! India has 48 public holidays! It looks like if you're looking for a place with some serious downtime, you may want to move to India. The median number of public holidays is 13, with a minimum of 7. Let's see who this country is. 
+
+```{r}
+# get country with lowest number of public holidays
+combined[which.min(combined$Public_Holidays), "Country"]
+```
+
+Yikes! Perhaps public holidays are the least of Libya's concerns at the moment, given they are embroiled in conflict and have [multiple governments vying for power and control over the country](http://www.aljazeera.com/indepth/features/2017/04/happening-libya-today-170418083223563.html).
+
+### Nordic countries, Switzerland, the Netherlands, Canada, Australia and New Zealand are the happiest countries on Earth
+
+Let's now turn our attention to see which countries have the highest happiness scores. Once again we'll use plotly to build an interactive world map and then check out the top ten happiest countries.
+
+```{r, fig.width = 10, warning = FALSE, plotly = TRUE}
+# code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l <- list(color = toRGB("grey"), width = 0.5)
+
+# specify map projection/options
+g <- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+q <- plot_geo(happy_countries) %>%
+  add_trace(
+    z = ~Score, color = ~Score, colors = 'Oranges',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %>%
+  colorbar(title = 'World Happiness Score') %>%
+  layout(
+    title = 'World Happiness Score<br>Source:<a href="https://en.wikipedia.org/wiki/World_Happiness_Report">World Happiness Report</a>',
+    geo = g
+  )
+
+# display
+q
+```
+
+Again, let's see the top ten.
+
+```{r}
+kable(top_n(combined, 10, Score) %>% 
+        arrange(desc(Score)) %>%
+        select(Country, Score),
+      caption = "Top 10 Happiest Countries")
+
+```
+
+That's truly amazing. Five of the 10 happiest countries are from the Nordic countries. 
+
+### Do more public holidays have any influence on happiness?
+
+Since India is a bit of an outlier with 48 public holidays we'll exclude it from our linear model as it is likely a high leverage point. 
+
+```{r}
+# generate a linear model to predict score without india
+m2 <- lm(Score ~ GDP_per_Capita + Healthy_Life_Expectancy + Freedom_to_Make_Life_Choices + Generosity + Trust + Public_Holidays, data = combined[-116,])
+
+summary(m2)
+```
+
+Interestingly, the number of public holidays as well as `Trust` have no significant bearing on predicting the happiness of a country.  Without a doubt, the strongest predictors are `GDP_per_Capita`, `Healthy_Life_Expectancy`, `Freedom_to_Make_Life_Choices` and a little bit of `Generosity`. 
+
+What nation wouldn't be happy if their people are relatively wealthy, healthy, free and generous?
+
+

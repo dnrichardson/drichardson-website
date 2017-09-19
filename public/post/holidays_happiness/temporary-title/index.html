@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Holidays and Happiness - What makes a country happy?</title>
+        <style>
+
+    html body {
+        font-family: Droid Sans, sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: orange;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid%20Sans">
+
+
+ <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script> 
+
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.27" />
+        
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+
+            <div class="container">
+
+                <div class="navbar-header">
+
+                    <a class="navbar-brand visible-xs" href="#">Holidays and Happiness - What makes a country happy?</a>
+
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                </div>
+
+                <div class="collapse navbar-collapse">
+
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/projects/">Projects</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                                <li><a href="/cv/">CV</a></li>
+                            
+                        </ul>
+                    
+
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:dalesan@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/dnrichardson/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://twitter.com/yogiwankinobi/"><i class="fa fa-twitter"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://www.linkedin.com/in/dalesan/"><i class="fa fa-linkedin"></i></a></li>
+                            
+                        </ul>
+                    
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+<main>
+
+    <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/holidays_happiness/temporary-title/">Holidays and Happiness - What makes a country happy?</a></h4>
+    <h5>September 18, 2017</h5>
+     <kbd class="item-tag">R Markdown</kbd>  <kbd class="item-tag">plot</kbd>  <kbd class="item-tag">EDA</kbd>  <kbd class="item-tag">regression</kbd> 
+
+</div>
+
+
+    <br> <div class="text-justify">
+
+<h2 id="description">Description</h2>
+
+<p>Over the past year I have spent a good portion of time in the office studying and preparing for a career transition. Finding a suitable work-life balance has been difficult, especially with the clock ticking on my post-doctoral fellowship running out in December, 2017. Most free moments I have during the day are usually d towards studying something datascience related or doing some sports in an effort to keep mind and body balanced. Add a family and day-job into the mix and you have a recipe for a very tight schedule.</p>
+
+<p>Given how busy I&rsquo;ve been, one would think I would welcome state sanctioned holidays, but to be honest I found myself slightly annoyed! This minor annoyance was probably due to the pressure of my imminently expiring fellowship. That being said, my annoyance got me thinking: does Portugal really have too many holidays? Which countries have the most public holidays? Furthermore, do countries with the most public holidays tend to be happier? More productive?</p>
+
+<p>Well, I thought this to be a perfect occassion to do some exploratory analyses in R.</p>
+
+<h4 id="quick-highlights">Quick highlights</h4>
+
+<ol>
+<li><p>India is the country with the most public holidays at 48. The country with the second most holidays is Pakistan, with 29 - a difference of 19! In contrast, Libya only has 7 public holidays, while the median number of public holidays is 13. In the end, Portugal only has 14 public holidays. Not so bad!</p></li>
+
+<li><p>Five of the 10 happiest nations on Earth are the Nordic countries (Norway, Denmark, Iceland, Finland and Sweden). The remaining five are Switzerland, the Netherlands, Canada, New Zealand and Australia. Portugal is ranked 89th in happiness and the USA (my birthplace) is ranked 14th.</p></li>
+
+<li><p>The number of public holidays is not a significant predictor of a nation&rsquo;s happiness. This is in stark contrast to the importance of wealth, health and generosity as important predictors of a nation&rsquo;s happiness. In short, the wealther, healthier and more generous a nation&rsquo;s people are, the happier they are.</p></li>
+</ol>
+
+<h3 id="get-a-list-of-holiday-counts-by-country-and-happiness-index-by-country">Get a list of holiday counts by country and happiness index by country</h3>
+
+<p>The first thing I needed to acquire was a listing of holidays across the globe. After some googling, I found a table on the <a href="http://timeanddate.com">timeanddate.com</a> website that provided this information. All I had to do was use the <code>rvest</code> package to scrape the table into a dataframe.</p>
+
+<p>Regarding the happiness index, after some googling, I discovered the <a href="https://en.wikipedia.org/wiki/World_Happiness_Report"><strong>World Happiness Report</strong></a>, which is &ldquo;a measure of happiness published by the United Nations Sustainable Development Solutions Network.&rdquo; Also from the wikipedia page:</p>
+
+<p>&ldquo;Data is collected from people in over 150 countries. Each variable measured reveals a populated-weighted average score on a scale running from 0 to 10 that is tracked over time and compared against other countries. These variables currently include: real GDP per capita, social support, healthy life expectancy, freedom to make life choices, generosity, and perceptions of corruption. Each country is also compared against a hypothetical nation called Dystopia. Dystopia represents the lowest national averages for each key variable and is, along with residual error, used as a regression benchmark.</p>
+
+<p>The 2017 report features the happiness score averaged over the years 2014-2016. For that timespan, Norway is the overall happiest country in the world, even though oil prices have dropped. Close behind are Denmark, Iceland and Switzerland in a tight pack. All the top ten countries have high scores in the six categories. The ranked follow-on countries in the top ten are: Finland, the Netherlands, Canada, New Zealand, Australia, and Sweden.&rdquo;</p>
+
+<h4 id="scrape-the-holidays-from-timeanddate-com">Scrape the holidays from timeanddate.com</h4>
+
+<p>First load necessary libraries.</p>
+
+<pre><code class="language-r">library(tidyverse)
+library(rvest)
+library(maps)
+library(plotly)
+library(knitr)
+</code></pre>
+
+<pre><code class="language-r"># store the url
+holidays &lt;- read_html(&quot;http://services.timeanddate.com/api/holiday-countries-listing.html&quot;)
+
+# get the table of holidays
+holiday_table &lt;- holidays %&gt;%
+        html_node(&quot;table&quot;) %&gt;%
+        html_table() %&gt;%
+        rename(Total_days = `Total Days`) %&gt;%
+        rename(Public_Holidays = `State &amp; Federal Holidays`) %&gt;%
+        select(Country, Id, Public_Holidays) %&gt;%
+        mutate(Id = toupper(Id))
+
+head(holiday_table)
+</code></pre>
+
+<pre><code>##          Country Id Public_Holidays
+## 1    Afghanistan AF               9
+## 2        Albania AL              14
+## 3        Algeria DZ              12
+## 4 American Samoa AS              12
+## 5        Andorra AD              22
+## 6         Angola AO              12
+</code></pre>
+
+<h4 id="get-iso-3-standard-country-codes-and-join-to-dataframe-of-country-holidays">Get ISO-3 Standard Country Codes and join to dataframe of country holidays</h4>
+
+<p>As plotly takes in ISO-3 country codes to specify country location in plots, I will also scrape the country codes from the FAO.</p>
+
+<pre><code class="language-r">## get ISO-3 country code names for plotting with plotly
+country_codes &lt;- read_html(&quot;http://www.fao.org/countryprofiles/iso3list/en/&quot;)
+
+iso3_table &lt;- country_codes %&gt;% 
+        html_node(&quot;table&quot;) %&gt;% 
+        html_table() #%&gt;%
+        #select(ISO3, ISO2)
+
+# inner join
+holiday_table_joined &lt;- inner_join(holiday_table, iso3_table, by = c(&quot;Id&quot; = &quot;ISO2&quot;) )
+</code></pre>
+
+<h4 id="scrape-happiness-scores-from-the-world-happiness-report-wiki-page">Scrape happiness scores from the World Happiness Report wiki page</h4>
+
+<pre><code class="language-r"># get world happiness / GDP table
+happiness &lt;- read_html(&quot;https://en.wikipedia.org/wiki/World_Happiness_Report&quot;)
+
+happiness_table &lt;- happiness %&gt;% 
+        html_node(xpath = '//*[@id=&quot;mw-content-text&quot;]/div/table[1]') %&gt;%
+        html_table(fill = TRUE) %&gt;%
+        rename(Overall_Rank = `Overall Rank`) %&gt;%
+        rename(GDP_per_Capita = `GDP per capita`) %&gt;%
+        rename(Healthy_Life_Expectancy = `Healthy life expectancy`) %&gt;%
+        rename(Social_Support = `Social support`) %&gt;%
+        rename(Freedom_to_Make_Life_Choices = `Freedom to make life choices`) %&gt;%
+        rename(Generosity = `Generosity`) %&gt;%
+        rename(Trust = `Trust`) %&gt;%
+        select(Country, Score, Overall_Rank, GDP_per_Capita, Healthy_Life_Expectancy, Social_Support, Freedom_to_Make_Life_Choices, Generosity, Trust) %&gt;%
+        mutate(Score = as.numeric(Score),
+               Overall_Rank = as.integer(Overall_Rank),
+               GDP_per_Capita = as.numeric(GDP_per_Capita),
+               Healthy_Life_Expectancy = as.numeric(Healthy_Life_Expectancy),
+               Social_Support = as.numeric(Social_Support),
+               Freedom_to_Make_Life_Choices = as.numeric(Freedom_to_Make_Life_Choices),
+               Generosity = as.numeric(Generosity),
+               Trust = as.numeric(Trust))
+
+# join happiness table with iso3 based on Country name
+tmp &lt;- inner_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;))
+
+glimpse(tmp)
+</code></pre>
+
+<pre><code>## Observations: 135
+## Variables: 16
+## $ Country                      &lt;chr&gt; &quot;Norway&quot;, &quot;Denmark&quot;, &quot;Iceland&quot;, &quot;...
+## $ Score                        &lt;dbl&gt; 7.537, 7.522, 7.504, 7.494, 7.469...
+## $ Overall_Rank                 &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...
+## $ GDP_per_Capita               &lt;dbl&gt; 1.616, 1.482, 1.481, 1.565, 1.444...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.797, 0.793, 0.834, 0.858, 0.809...
+## $ Social_Support               &lt;dbl&gt; 1.534, 1.551, 1.611, 1.517, 1.540...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.635, 0.626, 0.627, 0.620, 0.618...
+## $ Generosity                   &lt;dbl&gt; 0.362, 0.355, 0.476, 0.291, 0.245...
+## $ Trust                        &lt;dbl&gt; 0.316, 0.401, 0.154, 0.367, 0.383...
+## $ `Official name`              &lt;chr&gt; &quot;the Kingdom of Norway&quot;, &quot;the Kin...
+## $ ISO3                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ ISO2                         &lt;chr&gt; &quot;NO&quot;, &quot;DK&quot;, &quot;IS&quot;, &quot;CH&quot;, &quot;FI&quot;, &quot;NL...
+## $ UNI                          &lt;int&gt; 578, 208, 352, 756, 246, 528, 124...
+## $ UNDP                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ FAOSTAT                      &lt;int&gt; 162, 54, 99, 211, 67, 150, 33, 15...
+## $ GAUL                         &lt;int&gt; 186, 69, 114, 237, 84, 177, 46, 1...
+</code></pre>
+
+<p>There&rsquo;s a slight problem with the <code>Country</code> names in the table I scraped from Wikipedia and the table of country names and ISO codes I obtained from the FAO. In order to see the countries that could not be joined on account of inconsistent naming conventions, let&rsquo;s perform an anti-join.</p>
+
+<pre><code class="language-r"># see which countries have problems with names
+anti_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;)) %&gt;% select(Country)
+</code></pre>
+
+<pre><code>##                    Country
+## 1            United States
+## 2           Czech Republic
+## 3                   Taiwan
+## 4           Europe[Note 1]
+## 5                   Russia
+## 6                  Moldova
+## 7              South Korea
+## 8                  Bolivia
+## 9             North Cyprus
+## 10               Hong Kong
+## 11                   World
+## 12                  Kosovo
+## 13               Venezuela
+## 14               Macedonia
+## 15                 Vietnam
+## 16 Palestinian Territories
+## 17                    Iran
+## 18     Congo (Brazzaville)
+## 19        Congo (Kinshasa)
+## 20             Ivory Coast
+## 21                   Syria
+## 22                Tanzania
+</code></pre>
+
+<p>Alright. I see what I will have to do. Now that I know which country names are problematic in the <code>happiness_table</code>, I will manually replace them with the ISO country short names.</p>
+
+<pre><code class="language-r"># get a vector of bad country names
+replaceme &lt;- pull(anti_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;)) 
+                  %&gt;% select(Country))
+
+# drop irrelevant values or disputed territories, e.g. &quot;World&quot;
+replaceme &lt;- replaceme[-c(7, 11, 12, 13, 14, 19, 20)]
+
+good_names &lt;- c(&quot;United States of America&quot;,
+                &quot;Czechia&quot;,
+                &quot;Russian Federation&quot;,
+                &quot;Republic of Moldova&quot;,
+                &quot;Republic of Korea&quot;,
+                &quot;Bolivia (Plurinational State of)&quot;,
+                &quot;Venezuela (Bolivarian Republic of)&quot;,
+                &quot;The former Yugoslav Republic of Macedonia&quot;,
+                &quot;Viet nam&quot;,
+                &quot;Iran (Islamic Republic of)&quot;,
+                &quot;Congo&quot;,
+                &quot;Democratic Republic of the Congo&quot;,
+                &quot;Côte d'Ivoire&quot;,
+                &quot;Syrian Arab Republic&quot;,
+                &quot;United Republic of Tanzania&quot;
+)
+
+# get row number indices for &quot;bad&quot; country names in the happiness_table
+bad_country_index &lt;- as.numeric(rownames(happiness_table[happiness_table$Country %in% replaceme,]))
+
+# replace with &quot;good&quot; name
+happiness_table$Country &lt;- replace(happiness_table$Country, bad_country_index, good_names)
+
+# try joining again the happiness table with iso3 based on Country name
+happy_countries &lt;- inner_join(happiness_table, iso3_table, by = c(&quot;Country&quot; = &quot;Short name&quot;))
+
+glimpse(happy_countries)
+</code></pre>
+
+<pre><code>## Observations: 149
+## Variables: 16
+## $ Country                      &lt;chr&gt; &quot;Norway&quot;, &quot;Denmark&quot;, &quot;Iceland&quot;, &quot;...
+## $ Score                        &lt;dbl&gt; 7.537, 7.522, 7.504, 7.494, 7.469...
+## $ Overall_Rank                 &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11...
+## $ GDP_per_Capita               &lt;dbl&gt; 1.616, 1.482, 1.481, 1.565, 1.444...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.797, 0.793, 0.834, 0.858, 0.809...
+## $ Social_Support               &lt;dbl&gt; 1.534, 1.551, 1.611, 1.517, 1.540...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.635, 0.626, 0.627, 0.620, 0.618...
+## $ Generosity                   &lt;dbl&gt; 0.362, 0.355, 0.476, 0.291, 0.245...
+## $ Trust                        &lt;dbl&gt; 0.316, 0.401, 0.154, 0.367, 0.383...
+## $ `Official name`              &lt;chr&gt; &quot;the Kingdom of Norway&quot;, &quot;the Kin...
+## $ ISO3                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ ISO2                         &lt;chr&gt; &quot;NO&quot;, &quot;DK&quot;, &quot;IS&quot;, &quot;CH&quot;, &quot;FI&quot;, &quot;NL...
+## $ UNI                          &lt;int&gt; 578, 208, 352, 756, 246, 528, 124...
+## $ UNDP                         &lt;chr&gt; &quot;NOR&quot;, &quot;DNK&quot;, &quot;ISL&quot;, &quot;CHE&quot;, &quot;FIN&quot;...
+## $ FAOSTAT                      &lt;int&gt; 162, 54, 99, 211, 67, 150, 33, 15...
+## $ GAUL                         &lt;int&gt; 186, 69, 114, 237, 84, 177, 46, 1...
+</code></pre>
+
+<p>Ahh, good. Everything worked. We now have a dataframe of 149 countries along with their happiness scores and ISO-3 country codes.</p>
+
+<h4 id="join-the-holidays-table-to-the-happy-countries-dataframe">Join the holidays table to the happy_countries dataframe</h4>
+
+<pre><code class="language-r"># join tables based on country
+#combined &lt;- left_join(happy_countries, holiday_table, by = &quot;Country&quot;)
+combined &lt;- inner_join(holiday_table_joined, happy_countries,  by = &quot;ISO3&quot;) %&gt;% 
+        select(Country.y, Overall_Rank, Score, Public_Holidays, ISO3, GDP_per_Capita:Trust) %&gt;%
+        rename(Country = Country.y)
+
+glimpse(combined)
+</code></pre>
+
+<pre><code>## Observations: 147
+## Variables: 11
+## $ Country                      &lt;chr&gt; &quot;Afghanistan&quot;, &quot;Albania&quot;, &quot;Algeri...
+## $ Overall_Rank                 &lt;int&gt; 141, 109, 53, 140, 24, 121, 9, 13...
+## $ Score                        &lt;dbl&gt; 3.794, 4.644, 5.872, 3.795, 6.599...
+## $ Public_Holidays              &lt;int&gt; 9, 14, 12, 12, 17, 17, 20, 14, 24...
+## $ ISO3                         &lt;chr&gt; &quot;AFG&quot;, &quot;ALB&quot;, &quot;DZA&quot;, &quot;AGO&quot;, &quot;ARG&quot;...
+## $ GDP_per_Capita               &lt;dbl&gt; 0.401, 0.996, 1.092, 0.858, 1.185...
+## $ Healthy_Life_Expectancy      &lt;dbl&gt; 0.181, 0.731, 0.618, 0.050, 0.695...
+## $ Social_Support               &lt;dbl&gt; 0.582, 0.804, 1.146, 1.104, 1.440...
+## $ Freedom_to_Make_Life_Choices &lt;dbl&gt; 0.106, 0.381, 0.233, 0.000, 0.495...
+## $ Generosity                   &lt;dbl&gt; 0.312, 0.201, 0.069, 0.098, 0.109...
+## $ Trust                        &lt;dbl&gt; 0.061, 0.040, 0.146, 0.070, 0.060...
+</code></pre>
+
+<p>Now I have a table that includes data on holidays and happiness. Let&rsquo;s make a few plots!</p>
+
+<h3 id="india-has-the-most-public-holidays-at-48-whereas-libya-has-the-fewest-at-7">India has the most public holidays at 48 whereas Libya has the fewest at 7</h3>
+
+<p>I think it would be cool to start with a plot of holiday counts by country. I will use the <code>holiday_table</code> dataframe as it contains data on 192 countries, whereas the combined dataframe only has data for 147 countries. Let&rsquo;s try using plotly for an interactive experience.</p>
+
+<pre><code class="language-r"># code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l &lt;- list(color = toRGB(&quot;grey&quot;), width = 0.5)
+
+# specify map projection/options
+g &lt;- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+p &lt;- plot_geo(holiday_table_joined) %&gt;%
+  add_trace(
+    z = ~Public_Holidays, color = ~Public_Holidays, colors = 'Blues',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %&gt;%
+  colorbar(title = 'Number of public holidays') %&gt;%
+  layout(
+    title = 'World Public Holidays&lt;br&gt;Source:&lt;a href=&quot;http://services.timeanddate.com/api/holiday-countries-listing.html&quot;&gt;TimeandDate.com&lt;/a&gt;',
+    geo = g
+  )
+
+#display
+f &lt;- api_create(p, sharing = &quot;public&quot;)
+f
+</code></pre>
+
+<iframe src="https://plot.ly/~drichardson/168.embed" width="800" height="600" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+<p>Cool! Let&rsquo;s take a look at the top 10 countries with the most holidays.</p>
+
+<pre><code class="language-r">kable(top_n(combined, 10, Public_Holidays) %&gt;% 
+        arrange(desc(Public_Holidays)) %&gt;%
+        select(Country, Public_Holidays),
+      caption = &quot;Top 10 Countries with the Most Public Holidays&quot;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Country</th>
+<th align="right">Public_Holidays</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">India</td>
+<td align="right">48</td>
+</tr>
+
+<tr>
+<td align="left">Pakistan</td>
+<td align="right">29</td>
+</tr>
+
+<tr>
+<td align="left">Nepal</td>
+<td align="right">28</td>
+</tr>
+
+<tr>
+<td align="left">China</td>
+<td align="right">27</td>
+</tr>
+
+<tr>
+<td align="left">Iran (Islamic Republic of)</td>
+<td align="right">26</td>
+</tr>
+
+<tr>
+<td align="left">The former Yugoslav Republic of Macedonia</td>
+<td align="right">26</td>
+</tr>
+
+<tr>
+<td align="left">Malaysia</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Sri Lanka</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Thailand</td>
+<td align="right">25</td>
+</tr>
+
+<tr>
+<td align="left">Azerbaijan</td>
+<td align="right">24</td>
+</tr>
+</tbody>
+</table>
+
+<pre><code class="language-r"># take a summary as well
+summary(combined$Public_Holidays, na.rm = TRUE)
+</code></pre>
+
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    7.00   11.00   13.00   14.53   16.00   48.00
+</code></pre>
+
+<p>Impressive! India has 48 public holidays! It looks like if you&rsquo;re looking for a place with some serious downtime, you may want to move to India. The median number of public holidays is 13, with a minimum of 7. Let&rsquo;s see who this country is.</p>
+
+<pre><code class="language-r"># get country with lowest number of public holidays
+combined[which.min(combined$Public_Holidays), &quot;Country&quot;]
+</code></pre>
+
+<pre><code>## [1] &quot;Libya&quot;
+</code></pre>
+
+<p>Yikes! Perhaps public holidays are the least of Libya&rsquo;s concerns at the moment, given they are embroiled in conflict and have <a href="http://www.aljazeera.com/indepth/features/2017/04/happening-libya-today-170418083223563.html">multiple governments vying for power and control over the country</a>.</p>
+
+<h3 id="nordic-countries-switzerland-the-netherlands-canada-australia-and-new-zealand-are-the-happiest-countries-on-earth">Nordic countries, Switzerland, the Netherlands, Canada, Australia and New Zealand are the happiest countries on Earth</h3>
+
+<p>Let&rsquo;s now turn our attention to see which countries have the highest happiness scores. Once again we&rsquo;ll use plotly to build an interactive world map and then check out the top ten happiest countries.</p>
+
+<pre><code class="language-r"># code adapted from https://plot.ly/r/choropleth-maps/
+
+# light grey boundaries
+l &lt;- list(color = toRGB(&quot;grey&quot;), width = 0.5)
+
+# specify map projection/options
+g &lt;- list(
+  showframe = FALSE,
+  showcoastlines = FALSE,
+  projection = list(type = 'Mercator')
+)
+
+# create plot object
+q &lt;- plot_geo(happy_countries) %&gt;%
+  add_trace(
+    z = ~Score, color = ~Score, colors = 'Oranges',
+    text = ~Country, locations = ~ISO3, marker = list(line = l)
+  ) %&gt;%
+  colorbar(title = 'World Happiness Score') %&gt;%
+  layout(
+    title = 'World Happiness Score&lt;br&gt;Source:&lt;a href=&quot;https://en.wikipedia.org/wiki/World_Happiness_Report&quot;&gt;World Happiness Report&lt;/a&gt;',
+    geo = g
+  )
+
+# display
+z &lt;- api_create(q, sharing = &quot;public&quot;)
+z
+</code></pre>
+
+<iframe src="https://plot.ly/~drichardson/170.embed" width="800" height="600" id="igraph" scrolling="no" seamless="seamless" frameBorder="0"> </iframe>
+
+<p>Again, let&rsquo;s see the top ten.</p>
+
+<pre><code class="language-r">kable(top_n(combined, 10, Score) %&gt;% 
+        arrange(desc(Score)) %&gt;%
+        select(Country, Score),
+      caption = &quot;Top 10 Happiest Countries&quot;)
+</code></pre>
+
+<table>
+<thead>
+<tr>
+<th align="left">Country</th>
+<th align="right">Score</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left">Norway</td>
+<td align="right">7.537</td>
+</tr>
+
+<tr>
+<td align="left">Denmark</td>
+<td align="right">7.522</td>
+</tr>
+
+<tr>
+<td align="left">Iceland</td>
+<td align="right">7.504</td>
+</tr>
+
+<tr>
+<td align="left">Switzerland</td>
+<td align="right">7.494</td>
+</tr>
+
+<tr>
+<td align="left">Finland</td>
+<td align="right">7.469</td>
+</tr>
+
+<tr>
+<td align="left">Netherlands</td>
+<td align="right">7.377</td>
+</tr>
+
+<tr>
+<td align="left">Canada</td>
+<td align="right">7.316</td>
+</tr>
+
+<tr>
+<td align="left">New Zealand</td>
+<td align="right">7.314</td>
+</tr>
+
+<tr>
+<td align="left">Australia</td>
+<td align="right">7.284</td>
+</tr>
+
+<tr>
+<td align="left">Sweden</td>
+<td align="right">7.284</td>
+</tr>
+</tbody>
+</table>
+
+<p>That&rsquo;s truly amazing. Five of the 10 happiest countries are from the Nordic countries.</p>
+
+<h3 id="do-more-public-holidays-have-any-influence-on-happiness">Do more public holidays have any influence on happiness?</h3>
+
+<p>Since India is a bit of an outlier with 48 public holidays we&rsquo;ll exclude it from our linear model as it is likely a high leverage point.</p>
+
+<pre><code class="language-r"># generate a linear model to predict score without india
+m2 &lt;- lm(Score ~ GDP_per_Capita + Healthy_Life_Expectancy + Freedom_to_Make_Life_Choices + Generosity + Trust + Public_Holidays, data = combined[-116,])
+
+summary(m2)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## lm(formula = Score ~ GDP_per_Capita + Healthy_Life_Expectancy + 
+##     Freedom_to_Make_Life_Choices + Generosity + Trust + Public_Holidays, 
+##     data = combined[-116, ])
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -1.67511 -0.34340  0.02505  0.33934  1.11708 
+## 
+## Coefficients:
+##                               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)                   2.507093   0.181066  13.846  &lt; 2e-16 ***
+## GDP_per_Capita                1.246221   0.206843   6.025 1.46e-08 ***
+## Healthy_Life_Expectancy       1.534232   0.362751   4.229 4.24e-05 ***
+## Freedom_to_Make_Life_Choices  2.131775   0.373831   5.703 6.89e-08 ***
+## Generosity                    0.463805   0.358571   1.293   0.1980    
+## Trust                         0.495669   0.551279   0.899   0.3702    
+## Public_Holidays              -0.017832   0.008975  -1.987   0.0489 *  
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.5332 on 138 degrees of freedom
+##   (1 observation deleted due to missingness)
+## Multiple R-squared:  0.7952,	Adjusted R-squared:  0.7863 
+## F-statistic:  89.3 on 6 and 138 DF,  p-value: &lt; 2.2e-16
+</code></pre>
+
+<p>Interestingly, the number of public holidays as well as <code>Trust</code> have no significant bearing on predicting the happiness of a country.  Without a doubt, the strongest predictors are <code>GDP_per_Capita</code>, <code>Healthy_Life_Expectancy</code>, <code>Freedom_to_Make_Life_Choices</code> and a little bit of <code>Generosity</code>.</p>
+
+<p>What nation wouldn&rsquo;t be happy if their people are relatively wealthy, healthy, free and generous?</p>
+</div>
+
+    
+    
+
+    
+
+    
+
+        <h4 class="page-header">Comments</h4>
+
+        <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "dnrichardson-1" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    
+
+</main>
+
+        <footer>
+
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a></p>
+
+        </footer>
+
+    </body>
+
+</html>
+
