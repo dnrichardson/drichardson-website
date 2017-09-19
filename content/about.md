@@ -3,6 +3,9 @@ title = "About Dale"
 date = "2017-06-10"
 +++
 
+## A work in progress
+This site is a work in progress! I'm working hard to find the time to make updates to the site and build up a portfolio of analyses. Expect more projects and posts soon :).
+
 ## Currently
 
 I'm a postdoc in the [Plant Molecular Biology Laboratory](http://www.igc.gulbenkian.pt/pduque) at the [Instituto Gulbenkian de Ciência (IGC)](http://www.igc.gulbenkian.pt), a research institution located just outside of Lisbon, Portugal. I primarily rely on `R` and a suite of bioinformatics tools to analyze large-scale genomic changes in response to abiotic stress in the model plant organism, [*Arabidopsis thaliana*](https://en.wikipedia.org/wiki/Arabidopsis_thaliana), commonly known as the "thale cress".
